@@ -2,11 +2,9 @@ const ReziDB = require('./ReziDB')
 
 const { Buffer } = require('buffer')
 
-const blake3 = require('blake3')
-
 const Bitray = require('bitray')
 
-const markdown = require('markdown')
+const marked = require('marked')
 
 const fs = require('fs')
 
@@ -15,15 +13,11 @@ const packages = new ReziDB({
     path: './database/'
 })
 
-//packages.clear()
-
 const express = require('express')
 
 const app = express()
 
-app.listen(3000, require('ip').address('public', 'ipv4'))
-
-console.log(`http://${require('ip').address('public', 'ipv4')}:3000/`)
+app.listen(3000)
 
 app.get('/search', async (req, res) => {
 
@@ -105,11 +99,21 @@ app.get('/readme', async (req, res) => {
 
     const package = await packages.get(req.query['name'] || null)
 
-    const utf8 = package.readme.toString()
+    let readmeData = package.readme.toString()
 
-    console.log(package.readme.toString())
+    res.end(readmeData)
 
-    res.end(markdown.parse(utf8))
+})
+
+app.get('/readme-format', async (req, res) => {
+
+    res.contentType('text/plain')
+
+    const package = await packages.get(req.query['name'] || null)
+
+    let readmeData = package.readme.toString()
+
+    res.end(marked.parse(readmeData))
 
 })
 
@@ -121,9 +125,33 @@ app.get('/', async (req, res) => {
 
 })
 
+app.get('/rainbow.css', async (req, res) => {
+
+	res.contentType('text/css')
+
+	res.end(fs.readFileSync('./package/code.css'))
+
+})
+
+app.get('/rainbow.js', async (req, res) => {
+
+	res.contentType('application/javascript')
+
+	res.end(fs.readFileSync('./rainbow.min.js'))
+
+})
+
+app.get('/marked.js', async (req, res) => {
+
+	res.contentType('application/javascript')
+
+	res.end(fs.readFileSync('./marked.min.js'))
+
+})
+
 app.get('/package/*', async (req, res) => {
 
-    const name = req.url.split('/package')[1]?.replace('/', '') || null
+    const name = req.url.split('/package')[1].replace('/', '') || null
 
     console.log(name)
 
@@ -187,7 +215,7 @@ app.get('/night.jpg', async (req, res) => {
 
 	res.contentType('image/jpg')
 
-	res.end(fs.readFileSync('./img/night2.jpg'))
+	res.end(fs.readFileSync('./img/night3.jpg'))
 
 })
 

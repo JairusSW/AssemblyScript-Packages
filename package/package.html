@@ -3,6 +3,9 @@
 <!--<script src="/main.js"></script>-->
 <link rel="shortcut icon" href="/logo.svg" type="image/svg+xml"> 
 <link rel="stylesheet" href="/package.css">
+<link rel="stylesheet" href="/rainbow.css">
+<script src="/marked.js"></script>
+<script src="/rainbow.js"></script>
 <title>As-Bitray | AssemblyScript</title>
 <body>
     <div class="navbar">
@@ -34,11 +37,35 @@
 <script>
     $(document).ready(async () => {
         const currentPackage = window.location.href.split('/package')[1]?.replace('/', '') || ''
-        const fetched = await fetch(`http://192.168.9.206:3000/readme?name=${currentPackage}`)
+        const fetched = await fetch(`https://assemblyscript-packages.jairussw.repl.co/readme?name=${currentPackage}`)
         let body = await fetched.text()
-        body = body.replaceAll('<img', '<img class="readmeImg"')
-        console.log(body.replaceAll('<img', '<img class="readmeImg"'))
+				let html = marked(body)
+				html = html.replaceAll('<img', '<img class="readmeImg"')
         $('.readme').html(`
-        <div style="padding-left: 30px;">${body}</div>`)
+        <div style="padding-left: 30px;">${html}</div>`)
+
+				const blocksJS = document.getElementsByClassName('language-js')
+
+				for (let i = 0; i < blocksJS.length; i++) {
+					let element = blocksJS.item(i)
+					Rainbow.color(element.textContent, 'javascript', (code) => {
+						console.log('\nColored Code:\n', code)
+						element.innerHTML = code
+
+					})
+				}
+
+				const blocksBash = document.getElementsByClassName('language-bash')
+
+				for (let i = 0; i < blocksBash.length; i++) {
+					let element = blocksBash.item(i)
+					Rainbow.color(element.textContent, 'bash', (code) => {
+						console.log('\nBash Code:\n', code)
+						element.innerHTML = code
+
+					})
+				}
+
     })
+
 </script>

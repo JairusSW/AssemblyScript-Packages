@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="/main.css">
 <title>Packages | AssemblyScript</title>
 <body>
+<!--Navbar-->
 <div class="navbar">
     <img class="navbar-logo" src="/logo.svg" height: 40px; wclassth: 40px;>
     <div class="navbar-logoText">AssemblyScript
@@ -12,18 +13,46 @@
     </div>
     <textarea class="searchText" placeholder="Search for packages"></textarea>
     <div class="navbar-content">
-        <a class="navbar-packages" href="https://assemblyscript.org/packages/" rel="nofollow">Packages</a>
         <a class="navbar-about" href="https://assemblyscript.org/" rel="nofollow">About</a>
         <a class="navbar-docs" href="https://assemblyscript.org/introduction.html" rel="nofollow">Docs</a>
-        <a class="navbar-publish" href="https://assemblyscript.org/" rel="nofollow">Publish</a>
+        <a class="navbar-packages" href="https://assemblyscript.org/introduction.html" rel="nofollow">Packages</a>
+        <!--<button class="navbar-login">Login</button>-->
+        <button class="navbar-signup">Signup</button>
     </div>
 </div>
+<!--Signup Widget-->
+<div class="signup">
+</div> 
+<!--Main Text-->
 <div class="info">
     <div class="infoDiscover">Discover AssemblyScript.
         <div class="discoverText">Explore the power of AssemblyScript through a list of packages made for you.<br>With 💗 - The AssemblyScript Team</div>
     </div>
 </div>  
+<!--Star Animation-->
 <div class="stars"></div>
 <div class="stars2"></div>
 <div class="stars3"></div>
 </body>
+<script>
+    let loginButtonEnabled = false
+    $(document).ready(async () => {
+        const loginButton = $('.navbar-signup')
+        loginButton.on('click', () => {
+            if (loginButtonEnabled === false) {
+                $('.signup').html(`
+                    <div class="mainPanel">
+                    <input type="text" class="panelUsername" placeholder="Username"></input>
+                    <input type="email" class="panelEmail" placeholder="Email"></input>
+                    <input type="password" class="panelPassword" placeholder="Password"></input>
+                    <button class="panelButton">Signup</button>
+                    </div>
+                `)
+                loginButtonEnabled = true
+            } else {
+                $('.signup').html(``)
+                loginButtonEnabled = false
+            }
+        })
+    })
+</script>

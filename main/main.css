@@ -1,8 +1,6 @@
 body {
     background-image: url('./night.jpg');
-    /* disable stars
     overflow: hidden;
-    */
     overflow-x: hidden;
     padding: 0px;
     margin: 0px;
@@ -15,7 +13,7 @@ body {
     width: 100%;
     max-width: 100%;
     margin: 0px;
-    background-color: rgb(250, 250, 250);
+    background-color: rgba(250, 250, 250, 0.186);
     padding: 10px;
     display: flex;
     align-content: center;
@@ -25,7 +23,7 @@ body {
     height: 100%;
 }
 .navbar-logoText {
-    color: rgb(48, 48, 48);
+    color: rgb(202, 202, 202);
     padding-left: 20px;
     font-family: Helvetica;
     padding-top: 5px;
@@ -33,7 +31,7 @@ body {
     font-size: 15pt;
 }
 .navbar-logoSubText {
-    color: rgb(48, 48, 48);
+    color: rgb(202, 202, 202);
     font-family: Helvetica;
     padding-top: 5px;
     font-size: 12pt;
@@ -41,14 +39,12 @@ body {
 .navbar-content {
     padding-left: 12%;
     padding-top: 5px;
-    border-width: 2px;
-    border-color: dodgerblue;
     display: flex;
     flex-direction: row;
     flex-wrap: initial;
 }
 .navbar-packages {
-    color: rgb(48, 48, 48);
+    color: rgb(202, 202, 202);
     font-family: Helvetica;
     padding-top: 10px;
     font-size: 12pt;
@@ -56,7 +52,7 @@ body {
     padding-left: 25px;
 }
 .navbar-about {
-    color: rgb(48, 48, 48);
+    color: rgb(202, 202, 202);
     font-family: Helvetica;
     padding-top: 10px;
     font-size: 12pt;
@@ -64,20 +60,41 @@ body {
     padding-left: 25px;
 }
 .navbar-docs {
-    color: rgb(48, 48, 48);
+    color: rgb(202, 202, 202);
     font-family: Helvetica;
     padding-top: 10px;
     font-size: 12pt;
     position: relative;
     padding-left: 25px;
 }
-.navbar-publish {
-    color: rgb(48, 48, 48);
+.navbar-signup {
+	margin-left: 25px;
+    color: rgb(202, 202, 202);
     font-family: Helvetica;
     padding-top: 10px;
     font-size: 12pt;
     position: relative;
-    padding-left: 25px;
+    padding: 10px;
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+	border-width: 0px;
+	background-color: rgb(217, 90, 93);
+	text-align: center;
+}
+.navbar-login {
+	margin-left: 25px;
+    color: rgb(202, 202, 202);
+    font-family: Helvetica;
+    padding-top: 10px;
+    font-size: 12pt;
+    position: relative;
+    padding: 10px;
+	width: 100%;
+	border-radius: 5px;
+	border-width: 0px;
+	background-color: rgb(217, 90, 93);
+	text-align: center;
 }
 .info {
     padding-top: 20px;
@@ -121,6 +138,99 @@ body {
     border-width: 2px;
     text-indent: 5px;
 }
+/* Signup Widget*/
+.signup {
+    background-color: rgba(0, 0, 0, 0);
+    margin-top: 0px;
+    margin-left: 77.5%;
+    height: 45%;
+    width: 60%;
+    max-width: 60%;
+    position: absolute;
+    border-radius: 5px;
+    align-self: center;
+}
+.mainPanel {
+    background-color: rgb(48, 48, 48);
+    height: 100%;
+    width: 35%;
+    max-width: 60%;
+    position: absolute;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    align-self: center;
+}
+.panelUsername {
+    transition: 0.2s ease;
+    border: none;
+    background: transparent;
+    margin-top: 30px;
+    margin-left: 30px;
+    height: 10%;
+    width: 130%;
+    max-width: 60%;
+    position: absolute;
+    box-sizing: border-box;
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+    color:rgb(141, 141, 141);
+    border-width: 0px;
+}
+.panelPassword {
+    transition: 0.2s ease;
+    border: none;
+    background: transparent;
+    margin-top: 150px;
+    margin-left: 30px;
+    height: 10%;
+    width: 130%;
+    max-width: 60%;
+    position: absolute;
+    box-sizing: border-box;
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+    color:rgb(141, 141, 141);
+    border-width: 0px;
+}
+
+.panelEmail {
+    transition: 0.2s ease;
+    border: none;
+    background: transparent;
+    margin-top: 90px;
+    margin-left: 30px;
+    height: 10%;
+    width: 130%;
+    max-width: 60%;
+    position: absolute;
+    box-sizing: border-box;
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+    color:rgb(141, 141, 141);
+    border-width: 0px;
+}
+.panelButton {
+    transition: 0.2s ease;
+    border: none;
+    margin-top: 230px;
+    margin-left: 30px;
+    height: 12%;
+    width: 140%;
+    max-width: 60%;
+    position: absolute;
+    box-sizing: border-box;
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+    background-color:rgb(217, 90, 93);
+    border-width: 0px;
+    text-align: center;
+    vertical-align: middle;
+    color:rgb(232, 232, 232);
+    font-family: Catamaran;
+    font-weight: bold;
+    text-align: center;
+    font-size: 15pt;
+    border-radius: 5px;
+}
+/*Star Animation*/
 .stars {
 	width: 1px;
 	height: 1px;
