@@ -18,63 +18,7 @@
             <a class="navbar-publish" href="https://assemblyscript.org/" rel="nofollow">Publish</a>
         </div>
     </div>
-<div class="readme">
-    <div style="padding-left: 30px;" >
-        <h1>
-        <a id="user-content-blake3" class="anchor" href="#blake3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>BLAKE3</h1>
-        <p><strong>BLAKE3 Hashing In Pure JavaScript</strong></p>
-        <h3>
-        <a id="user-content-about" class="anchor" href="#about" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>About</h3>
-        <ul>
-        <li>100% JavaScript <g-emoji class="g-emoji" alias="muscle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4aa.png">💪</g-emoji>
-        </li>
-        <li>String/Array/Buffer Support <g-emoji class="g-emoji" alias="toolbox" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f9f0.png">🧰</g-emoji>
-        </li>
-        <li>Doesn't Crash <g-emoji class="g-emoji" alias="firecracker" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f9e8.png">🧨</g-emoji>
-        </li>
-        <li>Browser Support <g-emoji class="g-emoji" alias="dart" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f3af.png">🎯</g-emoji>
-        </li>
-        <li>Browserified <g-emoji class="g-emoji" alias="vulcan_salute" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f596.png">🖖</g-emoji>
-        </li>
-        </ul>
-        <h3>
-        <a id="user-content-installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h3>
-        <div class="highlight highlight-source-shell"><pre><span class="pl-k">~</span> npm i mini-blake3</pre></div>
-        <h3>
-        <a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h3>
-        <div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-kos">{</span> hash<span class="pl-kos">,</span> verify <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'mini-blake3'</span><span class="pl-kos">)</span>
-        
-        <span class="pl-k">const</span> <span class="pl-s1">hash</span> <span class="pl-c1">=</span> <span class="pl-s1">hash</span><span class="pl-kos">(</span><span class="pl-s">'data'</span><span class="pl-kos">)</span>
-        <span class="pl-c">//==&gt; &lt;Buffer 90 g2 71 b3 83 42 61 03 81 50 9b&gt;</span>
-        <span class="pl-k">const</span> <span class="pl-s1">verified</span> <span class="pl-c1">=</span> <span class="pl-en">verify</span><span class="pl-kos">(</span><span class="pl-s">'data'</span><span class="pl-kos">,</span> <span class="pl-s1">hash</span><span class="pl-kos">)</span>
-        <span class="pl-c">//==&gt; true/false</span></pre></div>
-        <h3>
-        <a id="user-content-related-packages" class="anchor" href="#related-packages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Related Packages</h3>
-        <ul>
-        <li>
-        <p><a href="https://npmjs.org/package/mini-blake2" rel="nofollow">Mini-Blake2</a></p>
-        </li>
-        <li>
-        <p><a href="https://npmjs.org/package/mini-bcrypt" rel="nofollow">Mini-Bcrypt</a></p>
-        </li>
-        <li>
-        <p><a href="https://npmjs.org/package/mini-blake3" rel="nofollow">Mini-Blake3</a></p>
-        </li>
-        <li>
-        <p><a href="https://npmjs.org/package/mini-md5" rel="nofollow">Mini-MD5</a></p>
-        </li>
-        <li>
-        <p><a href="https://npmjs.org/package/mini-sha1" rel="nofollow">Mini-Sha1</a></p>
-        </li>
-        <li>
-        <p><a href="https://npmjs.org/package/mini-sha2" rel="nofollow">Mini-Sha2</a></p>
-        </li>
-        <li>
-        <p><a href="https://npmjs.org/package/mini-sha3" rel="nofollow">Mini-Sha3</a></p>
-        </li>
-        </ul>
-        </div>
-</div>
+<div class="readme"></div>
 <div class="stats">
     <div class="NPMstats">
         <img src="/npm.png" class="NPMlogo">
@@ -87,3 +31,14 @@
     </div>
 </div>
 </body>
+<script>
+    $(document).ready(async () => {
+        const currentPackage = window.location.href.split('/package')[1]?.replace('/', '') || ''
+        const fetched = await fetch(`http://192.168.9.206:3000/readme?name=${currentPackage}`)
+        let body = await fetched.text()
+        body = body.replaceAll('<img', '<img class="readmeImg"')
+        console.log(body.replaceAll('<img', '<img class="readmeImg"'))
+        $('.readme').html(`
+        <div style="padding-left: 30px;">${body}</div>`)
+    })
+</script>

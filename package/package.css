@@ -108,6 +108,11 @@ body {
     position: absolute;
     border-radius: 5px;
 }
+.readmeImg {
+    margin-right: 30%;
+    width: 100%;
+    max-width: 70%;
+}
 .stats {
     background-color: rgba(0, 0, 0, 0);
     margin-top: 60px;

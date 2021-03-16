@@ -1,6 +1,12 @@
 const ReziDB = require('./ReziDB')
 
+const { Buffer } = require('buffer')
+
 const blake3 = require('blake3')
+
+const Bitray = require('bitray')
+
+const markdown = require('markdown')
 
 const fs = require('fs')
 
@@ -59,7 +65,7 @@ app.get('/publish', async (req, res) => {
             description: options.description,
             license: options.license,
             version: options.version,
-            readme: Buffer.from(options.readme, 'base64'),
+            readme: Buffer.from(options.readme, 'hex'),
             author: options.author
         })
 
@@ -93,11 +99,25 @@ app.get('/info', async (req, res) => {
 
 })
 
+app.get('/readme', async (req, res) => {
+
+    res.contentType('text/plain')
+
+    const package = await packages.get(req.query['name'] || null)
+
+    const utf8 = package.readme.toString()
+
+    console.log(package.readme.toString())
+
+    res.end(markdown.parse(utf8))
+
+})
+
 app.get('/', async (req, res) => {
 
 	res.contentType('text/html')
 
-	res.end(fs.readFileSync('../main/main.html'))
+	res.end(fs.readFileSync('./main/main.html'))
 
 })
 
@@ -111,7 +131,7 @@ app.get('/package/*', async (req, res) => {
 
         res.contentType('text/html')
 
-        res.end(fs.readFileSync('../404/404.html'))
+        res.end(fs.readFileSync('./404/404.html'))
 
         return
 
@@ -119,7 +139,7 @@ app.get('/package/*', async (req, res) => {
 
 	res.contentType('text/html')
 
-	res.end(fs.readFileSync('../package/package.html'))
+	res.end(fs.readFileSync('./package/package.html'))
 
 })
 
@@ -127,7 +147,7 @@ app.get('/404', async (req, res) => {
 
 	res.contentType('text/html')
 
-	res.end(fs.readFileSync('../404/404.html'))
+	res.end(fs.readFileSync('./404/404.html'))
 
 })
 
@@ -135,7 +155,7 @@ app.get('/main.css', async (req, res) => {
 
 	res.contentType('text/css')
 
-	res.end(fs.readFileSync('../main/main.css'))
+	res.end(fs.readFileSync('./main/main.css'))
 
 })
 
@@ -143,7 +163,7 @@ app.get('/404.css', async (req, res) => {
 
 	res.contentType('text/css')
 
-	res.end(fs.readFileSync('../404/404.css'))
+	res.end(fs.readFileSync('./404/404.css'))
 
 })
 
@@ -151,7 +171,7 @@ app.get('/package.css', async (req, res) => {
 
 	res.contentType('text/css')
 
-	res.end(fs.readFileSync('../package/package.css'))
+	res.end(fs.readFileSync('./package/package.css'))
 
 })
 
@@ -159,7 +179,7 @@ app.get('/logo.svg', async (req, res) => {
 
 	res.contentType('image/svg+xml')
 
-	res.end(fs.readFileSync('../img/logo.svg'))
+	res.end(fs.readFileSync('./img/logo.svg'))
 
 })
 
@@ -167,7 +187,7 @@ app.get('/night.jpg', async (req, res) => {
 
 	res.contentType('image/jpg')
 
-	res.end(fs.readFileSync('../img/night2.jpg'))
+	res.end(fs.readFileSync('./img/night2.jpg'))
 
 })
 
@@ -175,7 +195,7 @@ app.get('/npm.png', async (req, res) => {
 
 	res.contentType('image/png')
 
-	res.end(fs.readFileSync('../img/npm.png'))
+	res.end(fs.readFileSync('./img/npm.png'))
 
 })
 
@@ -183,7 +203,7 @@ app.get('/github.png', async (req, res) => {
 
 	res.contentType('image/png')
 
-	res.end(fs.readFileSync('../img/github.png'))
+	res.end(fs.readFileSync('./img/github.png'))
 
 })
 
@@ -191,6 +211,6 @@ app.get('/jquery.min.js', async (req, res) => {
 
 	res.contentType('text/javascript')
 
-	res.end(fs.readFileSync('../jquery.min.js'))
+	res.end(fs.readFileSync('./jquery.min.js'))
 
 })
