@@ -1,0 +1,23 @@
+{
+	"dependencies": {
+		"as-bitray": "^2.4.1",
+		"as-console": "^3.0.0",
+		"as-hex": "^1.0.1",
+		"as-latin1": "^1.0.0",
+		"bitray": "^2.0.8",
+		"blake3": "^2.1.4",
+		"express": "^4.17.1",
+		"fastify": "^3.12.0",
+		"get-stream": "^6.0.0",
+		"into-stream": "^6.0.0",
+		"jquery": "^3.5.1",
+		"level": "^6.0.1",
+		"leveldown": "^5.6.0",
+		"lodash": "^4.17.21",
+		"mini-blake3": "^6.5.5",
+		"needle": "^2.6.0",
+		"on-change": "^2.2.3",
+		"package": "^1.0.1",
+		"qs": "^6.9.6"
+	}
+}
