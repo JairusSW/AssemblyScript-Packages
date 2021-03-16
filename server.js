@@ -2,9 +2,11 @@ const ReziDB = require('./ReziDB')
 
 const { Buffer } = require('buffer')
 
+const blake3 = require('blake3')
+
 const Bitray = require('bitray')
 
-const marked = require('marked')
+const markdown = require('markdown')
 
 const fs = require('fs')
 
@@ -12,6 +14,8 @@ const packages = new ReziDB({
     name: 'package-database',
     path: './database/'
 })
+
+//packages.clear()
 
 const express = require('express')
 
@@ -99,21 +103,11 @@ app.get('/readme', async (req, res) => {
 
     const package = await packages.get(req.query['name'] || null)
 
-    let readmeData = package.readme.toString()
+    const utf8 = package.readme.toString()
 
-    res.end(readmeData)
+    console.log(package.readme.toString())
 
-})
-
-app.get('/readme-format', async (req, res) => {
-
-    res.contentType('text/plain')
-
-    const package = await packages.get(req.query['name'] || null)
-
-    let readmeData = package.readme.toString()
-
-    res.end(marked.parse(readmeData))
+    res.end(markdown.parse(utf8))
 
 })
 
@@ -122,30 +116,6 @@ app.get('/', async (req, res) => {
 	res.contentType('text/html')
 
 	res.end(fs.readFileSync('./main/main.html'))
-
-})
-
-app.get('/rainbow.css', async (req, res) => {
-
-	res.contentType('text/css')
-
-	res.end(fs.readFileSync('./package/code.css'))
-
-})
-
-app.get('/rainbow.js', async (req, res) => {
-
-	res.contentType('application/javascript')
-
-	res.end(fs.readFileSync('./rainbow.min.js'))
-
-})
-
-app.get('/marked.js', async (req, res) => {
-
-	res.contentType('application/javascript')
-
-	res.end(fs.readFileSync('./marked.min.js'))
 
 })
 
@@ -215,7 +185,7 @@ app.get('/night.jpg', async (req, res) => {
 
 	res.contentType('image/jpg')
 
-	res.end(fs.readFileSync('./img/night3.jpg'))
+	res.end(fs.readFileSync('./img/night2.jpg'))
 
 })
 
