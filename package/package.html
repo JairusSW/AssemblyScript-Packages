@@ -37,7 +37,7 @@
 <script>
     $(document).ready(async () => {
         const currentPackage = window.location.href.split('/package')[1]?.replace('/', '') || ''
-        const fetched = await fetch(`https://assemblyscript-packages.jairussw.repl.co/readme?name=${currentPackage}`)
+        const fetched = await fetch(`http://localhost:3000/readme?name=${currentPackage}`)
         let body = await fetched.text()
 				let html = marked(body)
 				html = html.replaceAll('<img', '<img class="readmeImg"')
