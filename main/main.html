@@ -1,58 +1,188 @@
 <!DOCTYPE html>
 <script src="/jquery.min.js"></script>
 <!--<script src="/main.js"></script>-->
-<link rel="shortcut icon" href="/logo.svg" type="image/svg+xml"> 
-<link rel="stylesheet" href="/main.css">
+<link rel="shortcut icon" href="/logo.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/main.css" />
 <title>Packages | AssemblyScript</title>
+
 <body>
-<!--Navbar-->
-<div class="navbar">
+  <!--Navbar-->
+  <div class="navbar">
     <img class="navbar-logo" src="/logo.svg" height: 40px; wclassth: 40px;>
-    <div class="navbar-logoText">AssemblyScript
-        <div class="navbar-logoSubText">Packages</div>
+    <div class="navbar-logoText">
+      AssemblyScript
+      <div class="navbar-logoSubText">Packages</div>
     </div>
     <textarea class="searchText" placeholder="Search for packages"></textarea>
     <div class="navbar-content">
-        <a class="navbar-about" href="https://assemblyscript.org/" rel="nofollow">About</a>
-        <a class="navbar-docs" href="https://assemblyscript.org/introduction.html" rel="nofollow">Docs</a>
-        <a class="navbar-packages" href="https://assemblyscript.org/introduction.html" rel="nofollow">Packages</a>
-        <!--<button class="navbar-login">Login</button>-->
-        <button class="navbar-signup">Signup</button>
+      <a class="navbar-about" href="https://assemblyscript.org/" rel="nofollow"
+        >About</a
+      >
+      <a
+        class="navbar-docs"
+        href="https://assemblyscript.org/introduction.html"
+        rel="nofollow"
+        >Docs</a
+      >
+      <a
+        class="navbar-packages"
+        href="https://assemblyscript.org/introduction.html"
+        rel="nofollow"
+        >Packages</a
+      >
+      <!--<button class="navbar-login">Login</button>-->
+      <button class="navbar-signup">Signup</button>
     </div>
-</div>
-<!--Signup Widget-->
-<div class="signup">
-</div> 
-<!--Main Text-->
-<div class="info">
-    <div class="infoDiscover">Discover AssemblyScript.
-        <div class="discoverText">Explore the power of AssemblyScript through a list of packages made for you.<br>With 💗 - The AssemblyScript Team</div>
+  </div>
+  <div class="searchResultsBox"></div>
+  <!--Signup Widget-->
+  <div class="signup"></div>
+  <!--Main Text-->
+  <div class="info">
+    <div class="infoDiscover">
+      Discover AssemblyScript.
+      <div class="discoverText">
+        Explore the power of AssemblyScript through a list of packages made for
+        you.<br />With 💗 - The AssemblyScript Team
+      </div>
     </div>
-</div>  
-<!--Star Animation-->
-<div class="stars"></div>
-<div class="stars2"></div>
-<div class="stars3"></div>
+  </div>
+  <!--Star Animation-->
+  <div class="stars"></div>
+  <div class="stars2"></div>
+  <div class="stars3"></div>
 </body>
 <script>
-    let loginButtonEnabled = false
-    $(document).ready(async () => {
-        const loginButton = $('.navbar-signup')
-        loginButton.on('click', () => {
-            if (loginButtonEnabled === false) {
-                $('.signup').html(`
+  let loginButtonEnabled = false;
+  $(document).ready(async () => {
+    const loginButton = $(".navbar-signup");
+    loginButton.on("click", async () => {
+      if (loginButtonEnabled === false) {
+        $(".signup").html(`
                     <div class="mainPanel">
                     <input type="text" class="panelUsername" placeholder="Username"></input>
-                    <input type="email" class="panelEmail" placeholder="Email"></input>
                     <input type="password" class="panelPassword" placeholder="Password"></input>
-                    <button class="panelButton">Signup</button>
+                    <button id="panelButton">Signup</button>
                     </div>
-                `)
-                loginButtonEnabled = true
-            } else {
-                $('.signup').html(``)
-                loginButtonEnabled = false
+                `);
+        loginButtonEnabled = true;
+        document.getElementById("panelButton").onclick = async () => {
+          console.log("Click!");
+          const username = $(".panelUsername").val() || null;
+
+          const password = $(".panelPassword").val() || null;
+
+          console.log("Username:", username);
+
+          console.log("Password:", password);
+
+          if (!username || !password) {
+            $(".signup").html(`
+                <div class="mainPanel">
+                <input type="text" class="panelUsername" placeholder="Username"></input>
+                <input type="password" class="panelPassword" placeholder="Password"></input>
+                <button class="panelButton">Signup</button>
+                </div>
+                `);
+
+            return;
+          }
+
+          const signupResults = await fetch(
+            `https://assemblyscript-packages.jairussw.repl.co/signup?username=${username}&password=${password}`
+          );
+
+          const singnupStatus = await signupResults.status;
+
+          console.log(await signupResults.text());
+
+          if (singnupStatus <= 400) {
+            $(".panelButton").text("Signed Up");
+          } else {
+            $(".signup").html(`
+                        <div class="mainPanel">
+                        <input type="text" class="panelUsername" placeholder="Username"></input>
+                        <input type="password" class="panelPassword" placeholder="Password"></input>
+                        <button class="panelButton">Signup</button>
+                        </div>
+                    `);
+          }
+        };
+      } else {
+        $(".signup").html(``);
+        loginButtonEnabled = false;
+      }
+    });
+
+    const searchBar = $(".searchText");
+
+    let searchEnabled = false;
+
+    searchBar.keyup(async (key) => {
+      console.log(key.keyCode);
+
+      if (searchEnabled === false) {
+        $(".searchResultsBox").html(`<div class="searchResults"></div>`);
+
+        searchEnabled = true;
+      }
+
+      if ($(".searchText").val().length <= 1) {
+        searchEnabled = false;
+
+        $(".searchResultsBox").html(``);
+      }
+
+      console.log(key.keyCode);
+
+      const search = await fetch(
+        `https://assemblyscript-packages.jairussw.repl.co/search?query=${$(
+          ".searchText"
+        )
+          .val()
+          .toLowerCase()}`
+      );
+
+      console.log(
+        `https://assemblyscript-packages.jairussw.repl.co/search?query=${$(
+          ".searchText"
+        )
+          .val()
+          .toLowerCase()}`
+      );
+
+      const results = await search.json();
+
+      let format = "";
+
+      let res = 0;
+
+      let limit = 10;
+
+      for (let i = 0; i < results.length; i++) {
+        let name;
+
+        if (i <= limit - 1) {
+          if (Object.keys(results[i] || {})[0])
+            name = Object.keys(results[i] || {})[0];
+
+          console.log("name: ", name);
+
+          let description;
+
+          if (name) {
+            if (results[i][name]) {
+              description = results[i][name].description;
             }
-        })
-    })
+          }
+
+          console.log("description:", description);
+
+          format += `<div class="searchTitle">${name}<div class="searchDescription">${description}</div></div>`;
+        }
+      }
+
+      $(".searchResults").html(format);
+    });
+  });
 </script>

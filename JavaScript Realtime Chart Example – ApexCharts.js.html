@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)https://apexcharts.com/javascript-chart-demos/line-charts/realtime/ -->
+<html><head id="www-apexcharts-com"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-merge-styles="true"></style><style data-styles="">ion-icon{visibility:hidden}.hydrated{visibility:inherit}</style> <!--[if IE ]><meta http-equiv="X-UA-Compatible" content="IE=edge"> <![endif]--> <script>window.Promise || document.write('<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"><\/script>');
+		window.Promise || document.write('<script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20171210/classList.min.js"><\/script>');
+		window.Promise || document.write('<script src="https://cdn.jsdelivr.net/npm/findindex_polyfill_mdn"><\/script>');
+		window.Promise || document.write('<script src="https://cdn.jsdelivr.net/npm/blob-polyfill"><\/script>');</script> <link rel="stylesheet" media="all" onload="this.onload=null;this.media=&#39;all&#39;;" id="ao_optimized_gfonts" href="./JavaScript Realtime Chart Example – ApexCharts.js_files/css"><link media="all" href="./JavaScript Realtime Chart Example – ApexCharts.js_files/autoptimize_da5ee6fa605c0d503798acbf1d1f3c42.css" rel="stylesheet"><link media="screen" href="./JavaScript Realtime Chart Example – ApexCharts.js_files/autoptimize_9c2eed08b0ab8b5c5473d9f5c71230a1.css" rel="stylesheet"><title>JavaScript Realtime Chart Example – ApexCharts.js</title><meta name="title" content="JavaScript Realtime Chart Example – ApexCharts.js"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="Copyright" content="Copyright © ApexCharts.js 2021. All Rights Reserved."><link rel="shortcut icon" href="https://apexcharts.com/wp-content/themes/apexcharts/favicon.ico"><link rel="preconnect" href="https://fonts.gstatic.com/">  <script async="" src="./JavaScript Realtime Chart Example – ApexCharts.js_files/js"></script> <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"><meta name="description" content="View the example of a JavaScript realtime line chart that updates every 2 seconds. Checkout the sample code for it included along with the example."><link rel="canonical" href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/"><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="JavaScript Realtime Chart Example – ApexCharts.js"><meta property="og:description" content="View the example of a JavaScript realtime line chart that updates every 2 seconds. Checkout the sample code for it included along with the example."><meta property="og:url" content="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/"><meta property="og:site_name" content="ApexCharts.js"><meta property="article:publisher" content="https://facebook.com/apexcharts"><meta property="article:modified_time" content="2020-01-21T10:04:47+00:00"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@apexcharts"> <script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://apexcharts.com/#organization","name":"ApexCharts","url":"https://apexcharts.com/","sameAs":["https://facebook.com/apexcharts","https://twitter.com/apexcharts"],"logo":{"@type":"ImageObject","@id":"https://apexcharts.com/#logo","inLanguage":"en-US","url":"https://apexcharts.com/wp-content/uploads/2018/05/apexcharts-logo-small.png","width":45,"height":39,"caption":"ApexCharts"},"image":{"@id":"https://apexcharts.com/#logo"}},{"@type":"WebSite","@id":"https://apexcharts.com/#website","url":"https://apexcharts.com/","name":"ApexCharts.js","description":"Open-Source HTML5 JavaScript Charts","publisher":{"@id":"https://apexcharts.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":"https://apexcharts.com/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#webpage","url":"https://apexcharts.com/javascript-chart-demos/line-charts/realtime/","name":"JavaScript Realtime Chart Example &ndash; ApexCharts.js","isPartOf":{"@id":"https://apexcharts.com/#website"},"datePublished":"2018-05-07T21:38:50+00:00","dateModified":"2020-01-21T10:04:47+00:00","description":"View the example of a JavaScript realtime line chart that updates every 2 seconds. Checkout the sample code for it included along with the example.","breadcrumb":{"@id":"https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://apexcharts.com/javascript-chart-demos/line-charts/realtime/"]}]},{"@type":"BreadcrumbList","@id":"https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://apexcharts.com/","url":"https://apexcharts.com/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://apexcharts.com/javascript-chart-demos/","url":"https://apexcharts.com/javascript-chart-demos/","name":"Chart Demos"}},{"@type":"ListItem","position":3,"item":{"@type":"WebPage","@id":"https://apexcharts.com/javascript-chart-demos/line-charts/","url":"https://apexcharts.com/javascript-chart-demos/line-charts/","name":"Line Charts"}},{"@type":"ListItem","position":4,"item":{"@type":"WebPage","@id":"https://apexcharts.com/javascript-chart-demos/line-charts/realtime/","url":"https://apexcharts.com/javascript-chart-demos/line-charts/realtime/","name":"Realtime"}}]}]}</script> <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/"><link rel="dns-prefetch" href="https://unpkg.com/"><link rel="dns-prefetch" href="https://cdnjs.cloudflare.com/"><link href="https://fonts.gstatic.com/" crossorigin="anonymous" rel="preconnect"><link rel="alternate" type="application/rss+xml" title="ApexCharts.js » Feed" href="https://apexcharts.com/feed/"><link rel="alternate" type="application/rss+xml" title="ApexCharts.js » Comments Feed" href="https://apexcharts.com/comments/feed/"> <script src="./JavaScript Realtime Chart Example – ApexCharts.js_files/jquery.min.js.download" id="jquery-js"></script> <link rel="https://api.w.org/" href="https://apexcharts.com/wp-json/"><link rel="alternate" type="application/json" href="https://apexcharts.com/wp-json/wp/v2/pages/1112"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://apexcharts.com/xmlrpc.php?rsd"><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://apexcharts.com/wp-includes/wlwmanifest.xml"><meta name="generator" content="WordPress 5.7"><link rel="shortlink" href="https://apexcharts.com/?p=1112"><link rel="alternate" type="application/json+oembed" href="https://apexcharts.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fapexcharts.com%2Fjavascript-chart-demos%2Fline-charts%2Frealtime%2F"><link rel="alternate" type="text/xml+oembed" href="https://apexcharts.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fapexcharts.com%2Fjavascript-chart-demos%2Fline-charts%2Frealtime%2F&amp;format=xml"> <script type="text/html" id="tmpl-autocomplete-header"><div class="autocomplete-header">
+	<div class="autocomplete-header-title">{{{ data.label }}}</div>
+	<div class="clear"></div>
+  </div></script> <script type="text/html" id="tmpl-autocomplete-post-suggestion"><a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.post_title }}">
+	<# if ( data.images.thumbnail ) { #>
+	  <img class="suggestion-post-thumbnail" src="{{ data.images.thumbnail.url }}" alt="{{ data.post_title }}">
+	  <# } #>
+		<div class="suggestion-post-attributes">
+		  <span class="suggestion-post-title">{{{ data._highlightResult.post_title.value }}}</span>
+		  <# if ( data._snippetResult['content'] ) { #>
+			<span class="suggestion-post-content">{{{ data._snippetResult['content'].value }}}</span>
+			<# } #>
+		</div>
+  </a></script> <script type="text/html" id="tmpl-autocomplete-term-suggestion"><a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.name }}">
+	<svg viewBox="0 0 21 21" width="21" height="21">
+	  <svg width="21" height="21" viewBox="0 0 21 21">
+		<path
+			d="M4.662 8.72l-1.23 1.23c-.682.682-.68 1.792.004 2.477l5.135 5.135c.7.693 1.8.688 2.48.005l1.23-1.23 5.35-5.346c.31-.31.54-.92.51-1.36l-.32-4.29c-.09-1.09-1.05-2.06-2.15-2.14l-4.3-.33c-.43-.03-1.05.2-1.36.51l-.79.8-2.27 2.28-2.28 2.27zm9.826-.98c.69 0 1.25-.56 1.25-1.25s-.56-1.25-1.25-1.25-1.25.56-1.25 1.25.56 1.25 1.25 1.25z"
+			fill-rule="evenodd"></path>
+	  </svg>
+	</svg>
+	<span class="suggestion-post-title">{{{ data._highlightResult.name.value }}}</span>
+  </a></script> <script type="text/html" id="tmpl-autocomplete-user-suggestion"><a class="suggestion-link user-suggestion-link" href="{{ data.posts_url }}" title="{{ data.display_name }}">
+	<# if ( data.avatar_url ) { #>
+	  <img class="suggestion-user-thumbnail" src="{{ data.avatar_url }}" alt="{{ data.display_name }}">
+	  <# } #>
+
+		<span class="suggestion-post-title">{{{ data._highlightResult.display_name.value }}}</span>
+  </a></script> <script type="text/html" id="tmpl-autocomplete-footer"><div class="autocomplete-footer">
+	<div class="autocomplete-footer-branding">
+	  <a href="#" class="algolia-powered-by-link" title="Algolia">
+		<svg width="130" viewBox="0 0 130 18" xmlns="http://www.w3.org/2000/svg">
+		  <title>Search by Algolia</title>
+		  <defs>
+			<linearGradient x1="-36.868%" y1="134.936%" x2="129.432%" y2="-27.7%" id="a">
+			  <stop stop-color="#00AEFF" offset="0%"/>
+			  <stop stop-color="#3369E7" offset="100%"/>
+			</linearGradient>
+		  </defs>
+		  <g fill="none" fill-rule="evenodd">
+			<path
+				d="M59.399.022h13.299a2.372 2.372 0 0 1 2.377 2.364V15.62a2.372 2.372 0 0 1-2.377 2.364H59.399a2.372 2.372 0 0 1-2.377-2.364V2.381A2.368 2.368 0 0 1 59.399.022z"
+				fill="url(#a)"/>
+			<path
+				d="M66.257 4.56c-2.815 0-5.1 2.272-5.1 5.078 0 2.806 2.284 5.072 5.1 5.072 2.815 0 5.1-2.272 5.1-5.078 0-2.806-2.279-5.072-5.1-5.072zm0 8.652c-1.983 0-3.593-1.602-3.593-3.574 0-1.972 1.61-3.574 3.593-3.574 1.983 0 3.593 1.602 3.593 3.574a3.582 3.582 0 0 1-3.593 3.574zm0-6.418v2.664c0 .076.082.131.153.093l2.377-1.226c.055-.027.071-.093.044-.147a2.96 2.96 0 0 0-2.465-1.487c-.055 0-.11.044-.11.104l.001-.001zm-3.33-1.956l-.312-.311a.783.783 0 0 0-1.106 0l-.372.37a.773.773 0 0 0 0 1.101l.307.305c.049.049.121.038.164-.011.181-.245.378-.479.597-.697.225-.223.455-.42.707-.599.055-.033.06-.109.016-.158h-.001zm5.001-.806v-.616a.781.781 0 0 0-.783-.779h-1.824a.78.78 0 0 0-.783.779v.632c0 .071.066.12.137.104a5.736 5.736 0 0 1 1.588-.223c.52 0 1.035.071 1.534.207a.106.106 0 0 0 .131-.104z"
+				fill="#FFF"/>
+			<path
+				d="M102.162 13.762c0 1.455-.372 2.517-1.123 3.193-.75.676-1.895 1.013-3.44 1.013-.564 0-1.736-.109-2.673-.316l.345-1.689c.783.163 1.819.207 2.361.207.86 0 1.473-.174 1.84-.523.367-.349.548-.866.548-1.553v-.349a6.374 6.374 0 0 1-.838.316 4.151 4.151 0 0 1-1.194.158 4.515 4.515 0 0 1-1.616-.278 3.385 3.385 0 0 1-1.254-.817 3.744 3.744 0 0 1-.811-1.351c-.192-.539-.29-1.504-.29-2.212 0-.665.104-1.498.307-2.054a3.925 3.925 0 0 1 .904-1.433 4.124 4.124 0 0 1 1.441-.926 5.31 5.31 0 0 1 1.945-.365c.696 0 1.337.087 1.961.191a15.86 15.86 0 0 1 1.588.332v8.456h-.001zm-5.954-4.206c0 .893.197 1.885.592 2.299.394.414.904.621 1.528.621.34 0 .663-.049.964-.142a2.75 2.75 0 0 0 .734-.332v-5.29a8.531 8.531 0 0 0-1.413-.18c-.778-.022-1.369.294-1.786.801-.411.507-.619 1.395-.619 2.223zm16.12 0c0 .719-.104 1.264-.318 1.858a4.389 4.389 0 0 1-.904 1.52c-.389.42-.854.746-1.402.975-.548.229-1.391.36-1.813.36-.422-.005-1.26-.125-1.802-.36a4.088 4.088 0 0 1-1.397-.975 4.486 4.486 0 0 1-.909-1.52 5.037 5.037 0 0 1-.329-1.858c0-.719.099-1.411.318-1.999.219-.588.526-1.09.92-1.509.394-.42.865-.741 1.402-.97a4.547 4.547 0 0 1 1.786-.338 4.69 4.69 0 0 1 1.791.338c.548.229 1.019.55 1.402.97.389.42.69.921.909 1.509.23.588.345 1.28.345 1.999h.001zm-2.191.005c0-.921-.203-1.689-.597-2.223-.394-.539-.948-.806-1.654-.806-.707 0-1.26.267-1.654.806-.394.539-.586 1.302-.586 2.223 0 .932.197 1.558.592 2.098.394.545.948.812 1.654.812.707 0 1.26-.272 1.654-.812.394-.545.592-1.166.592-2.098h-.001zm6.962 4.707c-3.511.016-3.511-2.822-3.511-3.274L113.583.926l2.142-.338v10.003c0 .256 0 1.88 1.375 1.885v1.792h-.001zm3.774 0h-2.153V5.072l2.153-.338v9.534zm-1.079-10.542c.718 0 1.304-.578 1.304-1.291 0-.714-.581-1.291-1.304-1.291-.723 0-1.304.578-1.304 1.291 0 .714.586 1.291 1.304 1.291zm6.431 1.013c.707 0 1.304.087 1.786.262.482.174.871.42 1.156.73.285.311.488.735.608 1.182.126.447.186.937.186 1.476v5.481a25.24 25.24 0 0 1-1.495.251c-.668.098-1.419.147-2.251.147a6.829 6.829 0 0 1-1.517-.158 3.213 3.213 0 0 1-1.178-.507 2.455 2.455 0 0 1-.761-.904c-.181-.37-.274-.893-.274-1.438 0-.523.104-.855.307-1.215.208-.36.487-.654.838-.883a3.609 3.609 0 0 1 1.227-.49 7.073 7.073 0 0 1 2.202-.103c.263.027.537.076.833.147v-.349c0-.245-.027-.479-.088-.697a1.486 1.486 0 0 0-.307-.583c-.148-.169-.34-.3-.581-.392a2.536 2.536 0 0 0-.915-.163c-.493 0-.942.06-1.353.131-.411.071-.75.153-1.008.245l-.257-1.749c.268-.093.668-.185 1.183-.278a9.335 9.335 0 0 1 1.66-.142l-.001-.001zm.181 7.731c.657 0 1.145-.038 1.484-.104v-2.168a5.097 5.097 0 0 0-1.978-.104c-.241.033-.46.098-.652.191a1.167 1.167 0 0 0-.466.392c-.121.169-.175.267-.175.523 0 .501.175.79.493.981.323.196.75.289 1.293.289h.001zM84.109 4.794c.707 0 1.304.087 1.786.262.482.174.871.42 1.156.73.29.316.487.735.608 1.182.126.447.186.937.186 1.476v5.481a25.24 25.24 0 0 1-1.495.251c-.668.098-1.419.147-2.251.147a6.829 6.829 0 0 1-1.517-.158 3.213 3.213 0 0 1-1.178-.507 2.455 2.455 0 0 1-.761-.904c-.181-.37-.274-.893-.274-1.438 0-.523.104-.855.307-1.215.208-.36.487-.654.838-.883a3.609 3.609 0 0 1 1.227-.49 7.073 7.073 0 0 1 2.202-.103c.257.027.537.076.833.147v-.349c0-.245-.027-.479-.088-.697a1.486 1.486 0 0 0-.307-.583c-.148-.169-.34-.3-.581-.392a2.536 2.536 0 0 0-.915-.163c-.493 0-.942.06-1.353.131-.411.071-.75.153-1.008.245l-.257-1.749c.268-.093.668-.185 1.183-.278a8.89 8.89 0 0 1 1.66-.142l-.001-.001zm.186 7.736c.657 0 1.145-.038 1.484-.104v-2.168a5.097 5.097 0 0 0-1.978-.104c-.241.033-.46.098-.652.191a1.167 1.167 0 0 0-.466.392c-.121.169-.175.267-.175.523 0 .501.175.79.493.981.318.191.75.289 1.293.289h.001zm8.682 1.738c-3.511.016-3.511-2.822-3.511-3.274L89.461.926l2.142-.338v10.003c0 .256 0 1.88 1.375 1.885v1.792h-.001z"
+				fill="#182359"/>
+			<path
+				d="M5.027 11.025c0 .698-.252 1.246-.757 1.644-.505.397-1.201.596-2.089.596-.888 0-1.615-.138-2.181-.414v-1.214c.358.168.739.301 1.141.397.403.097.778.145 1.125.145.508 0 .884-.097 1.125-.29a.945.945 0 0 0 .363-.779.978.978 0 0 0-.333-.747c-.222-.204-.68-.446-1.375-.725-.716-.29-1.221-.621-1.515-.994-.294-.372-.44-.82-.44-1.343 0-.655.233-1.171.698-1.547.466-.376 1.09-.564 1.875-.564.752 0 1.5.165 2.245.494l-.408 1.047c-.698-.294-1.321-.44-1.869-.44-.415 0-.73.09-.945.271a.89.89 0 0 0-.322.717c0 .204.043.379.129.524.086.145.227.282.424.411.197.129.551.299 1.063.51.577.24.999.464 1.268.671.269.208.466.442.591.704.125.261.188.569.188.924l-.001.002zm3.98 2.24c-.924 0-1.646-.269-2.167-.808-.521-.539-.782-1.281-.782-2.226 0-.97.242-1.733.725-2.288.483-.555 1.148-.833 1.993-.833.784 0 1.404.238 1.858.714.455.476.682 1.132.682 1.966v.682H7.357c.018.577.174 1.02.467 1.329.294.31.707.465 1.241.465.351 0 .678-.033.98-.099a5.1 5.1 0 0 0 .975-.33v1.026a3.865 3.865 0 0 1-.935.312 5.723 5.723 0 0 1-1.08.091l.002-.001zm-.231-5.199c-.401 0-.722.127-.964.381s-.386.625-.432 1.112h2.696c-.007-.491-.125-.862-.354-1.115-.229-.252-.544-.379-.945-.379l-.001.001zm7.692 5.092l-.252-.827h-.043c-.286.362-.575.608-.865.739-.29.131-.662.196-1.117.196-.584 0-1.039-.158-1.367-.473-.328-.315-.491-.761-.491-1.337 0-.612.227-1.074.682-1.386.455-.312 1.148-.482 2.079-.51l1.026-.032v-.317c0-.38-.089-.663-.266-.851-.177-.188-.452-.282-.824-.282-.304 0-.596.045-.876.134a6.68 6.68 0 0 0-.806.317l-.408-.902a4.414 4.414 0 0 1 1.058-.384 4.856 4.856 0 0 1 1.085-.132c.756 0 1.326.165 1.711.494.385.329.577.847.577 1.552v4.002h-.902l-.001-.001zm-1.88-.859c.458 0 .826-.128 1.104-.384.278-.256.416-.615.416-1.077v-.516l-.763.032c-.594.021-1.027.121-1.297.298s-.406.448-.406.814c0 .265.079.47.236.615.158.145.394.218.709.218h.001zm7.557-5.189c.254 0 .464.018.628.054l-.124 1.176a2.383 2.383 0 0 0-.559-.064c-.505 0-.914.165-1.227.494-.313.329-.47.757-.47 1.284v3.105h-1.262V7.218h.988l.167 1.047h.064c.197-.354.454-.636.771-.843a1.83 1.83 0 0 1 1.023-.312h.001zm4.125 6.155c-.899 0-1.582-.262-2.049-.787-.467-.525-.701-1.277-.701-2.259 0-.999.244-1.767.733-2.304.489-.537 1.195-.806 2.119-.806.627 0 1.191.116 1.692.349l-.381 1.015c-.534-.208-.974-.312-1.321-.312-1.028 0-1.542.682-1.542 2.046 0 .666.128 1.166.384 1.501.256.335.631.502 1.125.502a3.23 3.23 0 0 0 1.595-.419v1.101a2.53 2.53 0 0 1-.722.285 4.356 4.356 0 0 1-.932.086v.002zm8.277-.107h-1.268V9.506c0-.458-.092-.8-.277-1.026-.184-.226-.477-.338-.878-.338-.53 0-.919.158-1.168.475-.249.317-.373.848-.373 1.593v2.949h-1.262V4.801h1.262v2.122c0 .34-.021.704-.064 1.09h.081a1.76 1.76 0 0 1 .717-.666c.306-.158.663-.236 1.072-.236 1.439 0 2.159.725 2.159 2.175v3.873l-.001-.001zm7.649-6.048c.741 0 1.319.269 1.732.806.414.537.62 1.291.62 2.261 0 .974-.209 1.732-.628 2.275-.419.542-1.001.814-1.746.814-.752 0-1.336-.27-1.751-.811h-.086l-.231.704h-.945V4.801h1.262v1.987l-.021.655-.032.553h.054c.401-.591.992-.886 1.772-.886zm-.328 1.031c-.508 0-.875.149-1.098.448-.224.299-.339.799-.346 1.501v.086c0 .723.115 1.247.344 1.571.229.324.603.486 1.123.486.448 0 .787-.177 1.018-.532.231-.354.346-.867.346-1.536 0-1.35-.462-2.025-1.386-2.025l-.001.001zm3.244-.924h1.375l1.209 3.368c.183.48.304.931.365 1.354h.043c.032-.197.091-.436.177-.717.086-.281.541-1.616 1.364-4.004h1.364l-2.541 6.73c-.462 1.235-1.232 1.853-2.31 1.853-.279 0-.551-.03-.816-.091v-.999c.19.043.406.064.65.064.609 0 1.037-.353 1.284-1.058l.22-.559-2.385-5.941h.001z"
+				fill="#1D3657"/>
+		  </g>
+		</svg>
+	  </a>
+	</div>
+  </div></script> <script type="text/html" id="tmpl-autocomplete-empty"><div class="autocomplete-empty">
+	  No results matched your query 	<span class="empty-query">"{{ data.query }}"</span>
+  </div></script> <style type="text/css">.apexcharts-canvas {
+  position: relative;
+  user-select: none;
+  /* cannot give overflow: hidden as it will crop tooltips which overflow outside chart area */
+}
+
+
+/* scrollbar is not visible by default for legend, hence forcing the visibility */
+.apexcharts-canvas ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 6px;
+}
+
+.apexcharts-canvas ::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+
+.apexcharts-inner {
+  position: relative;
+}
+
+.apexcharts-text tspan {
+  font-family: inherit;
+}
+
+.legend-mouseover-inactive {
+  transition: 0.15s ease all;
+  opacity: 0.20;
+}
+
+.apexcharts-series-collapsed {
+  opacity: 0;
+}
+
+.apexcharts-tooltip {
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px -4px #999;
+  cursor: default;
+  font-size: 14px;
+  left: 62px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 12;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-tooltip.apexcharts-active {
+  opacity: 1;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-tooltip.apexcharts-theme-light {
+  border: 1px solid #e3e3e3;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.apexcharts-tooltip.apexcharts-theme-dark {
+  color: #fff;
+  background: rgba(30, 30, 30, 0.8);
+}
+
+.apexcharts-tooltip * {
+  font-family: inherit;
+}
+
+
+.apexcharts-tooltip-title {
+  padding: 6px;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
+  background: #ECEFF1;
+  border-bottom: 1px solid #ddd;
+}
+
+.apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-title {
+  background: rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid #333;
+}
+
+.apexcharts-tooltip-text-value,
+.apexcharts-tooltip-text-z-value {
+  display: inline-block;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.apexcharts-tooltip-text-z-label:empty,
+.apexcharts-tooltip-text-z-value:empty {
+  display: none;
+}
+
+.apexcharts-tooltip-text-value,
+.apexcharts-tooltip-text-z-value {
+  font-weight: 600;
+}
+
+.apexcharts-tooltip-marker {
+  width: 12px;
+  height: 12px;
+  position: relative;
+  top: 0px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.apexcharts-tooltip-series-group {
+  padding: 0 10px;
+  display: none;
+  text-align: left;
+  justify-content: left;
+  align-items: center;
+}
+
+.apexcharts-tooltip-series-group.apexcharts-active .apexcharts-tooltip-marker {
+  opacity: 1;
+}
+
+.apexcharts-tooltip-series-group.apexcharts-active,
+.apexcharts-tooltip-series-group:last-child {
+  padding-bottom: 4px;
+}
+
+.apexcharts-tooltip-series-group-hidden {
+  opacity: 0;
+  height: 0;
+  line-height: 0;
+  padding: 0 !important;
+}
+
+.apexcharts-tooltip-y-group {
+  padding: 6px 0 5px;
+}
+
+.apexcharts-tooltip-box, .apexcharts-custom-tooltip {
+  padding: 4px 8px;
+}
+
+.apexcharts-tooltip-boxPlot {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.apexcharts-tooltip-box>div {
+  margin: 4px 0;
+}
+
+.apexcharts-tooltip-box span.value {
+  font-weight: bold;
+}
+
+.apexcharts-tooltip-rangebar {
+  padding: 5px 8px;
+}
+
+.apexcharts-tooltip-rangebar .category {
+  font-weight: 600;
+  color: #777;
+}
+
+.apexcharts-tooltip-rangebar .series-name {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.apexcharts-xaxistooltip {
+  opacity: 0;
+  padding: 9px 10px;
+  pointer-events: none;
+  color: #373d3f;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 10;
+  background: #ECEFF1;
+  border: 1px solid #90A4AE;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-xaxistooltip.apexcharts-theme-dark {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.apexcharts-xaxistooltip:after,
+.apexcharts-xaxistooltip:before {
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.apexcharts-xaxistooltip:after {
+  border-color: rgba(236, 239, 241, 0);
+  border-width: 6px;
+  margin-left: -6px;
+}
+
+.apexcharts-xaxistooltip:before {
+  border-color: rgba(144, 164, 174, 0);
+  border-width: 7px;
+  margin-left: -7px;
+}
+
+.apexcharts-xaxistooltip-bottom:after,
+.apexcharts-xaxistooltip-bottom:before {
+  bottom: 100%;
+}
+
+.apexcharts-xaxistooltip-top:after,
+.apexcharts-xaxistooltip-top:before {
+  top: 100%;
+}
+
+.apexcharts-xaxistooltip-bottom:after {
+  border-bottom-color: #ECEFF1;
+}
+
+.apexcharts-xaxistooltip-bottom:before {
+  border-bottom-color: #90A4AE;
+}
+
+.apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:after {
+  border-bottom-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:before {
+  border-bottom-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip-top:after {
+  border-top-color: #ECEFF1
+}
+
+.apexcharts-xaxistooltip-top:before {
+  border-top-color: #90A4AE;
+}
+
+.apexcharts-xaxistooltip-top.apexcharts-theme-dark:after {
+  border-top-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip-top.apexcharts-theme-dark:before {
+  border-top-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip.apexcharts-active {
+  opacity: 1;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-yaxistooltip {
+  opacity: 0;
+  padding: 4px 10px;
+  pointer-events: none;
+  color: #373d3f;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 10;
+  background: #ECEFF1;
+  border: 1px solid #90A4AE;
+}
+
+.apexcharts-yaxistooltip.apexcharts-theme-dark {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.apexcharts-yaxistooltip:after,
+.apexcharts-yaxistooltip:before {
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.apexcharts-yaxistooltip:after {
+  border-color: rgba(236, 239, 241, 0);
+  border-width: 6px;
+  margin-top: -6px;
+}
+
+.apexcharts-yaxistooltip:before {
+  border-color: rgba(144, 164, 174, 0);
+  border-width: 7px;
+  margin-top: -7px;
+}
+
+.apexcharts-yaxistooltip-left:after,
+.apexcharts-yaxistooltip-left:before {
+  left: 100%;
+}
+
+.apexcharts-yaxistooltip-right:after,
+.apexcharts-yaxistooltip-right:before {
+  right: 100%;
+}
+
+.apexcharts-yaxistooltip-left:after {
+  border-left-color: #ECEFF1;
+}
+
+.apexcharts-yaxistooltip-left:before {
+  border-left-color: #90A4AE;
+}
+
+.apexcharts-yaxistooltip-left.apexcharts-theme-dark:after {
+  border-left-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip-left.apexcharts-theme-dark:before {
+  border-left-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip-right:after {
+  border-right-color: #ECEFF1;
+}
+
+.apexcharts-yaxistooltip-right:before {
+  border-right-color: #90A4AE;
+}
+
+.apexcharts-yaxistooltip-right.apexcharts-theme-dark:after {
+  border-right-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip-right.apexcharts-theme-dark:before {
+  border-right-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip.apexcharts-active {
+  opacity: 1;
+}
+
+.apexcharts-yaxistooltip-hidden {
+  display: none;
+}
+
+.apexcharts-xcrosshairs,
+.apexcharts-ycrosshairs {
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-xcrosshairs.apexcharts-active,
+.apexcharts-ycrosshairs.apexcharts-active {
+  opacity: 1;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-ycrosshairs-hidden {
+  opacity: 0;
+}
+
+.apexcharts-selection-rect {
+  cursor: move;
+}
+
+.svg_select_boundingRect, .svg_select_points_rot {
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+.apexcharts-selection-rect + g .svg_select_boundingRect,
+.apexcharts-selection-rect + g .svg_select_points_rot {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.apexcharts-selection-rect + g .svg_select_points_l,
+.apexcharts-selection-rect + g .svg_select_points_r {
+  cursor: ew-resize;
+  opacity: 1;
+  visibility: visible;
+}
+
+.svg_select_points {
+  fill: #efefef;
+  stroke: #333;
+  rx: 2;
+}
+
+.apexcharts-svg.apexcharts-zoomable.hovering-zoom {
+  cursor: crosshair
+}
+
+.apexcharts-svg.apexcharts-zoomable.hovering-pan {
+  cursor: move
+}
+
+.apexcharts-zoom-icon,
+.apexcharts-zoomin-icon,
+.apexcharts-zoomout-icon,
+.apexcharts-reset-icon,
+.apexcharts-pan-icon,
+.apexcharts-selection-icon,
+.apexcharts-menu-icon,
+.apexcharts-toolbar-custom-icon {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  line-height: 24px;
+  color: #6E8192;
+  text-align: center;
+}
+
+.apexcharts-zoom-icon svg,
+.apexcharts-zoomin-icon svg,
+.apexcharts-zoomout-icon svg,
+.apexcharts-reset-icon svg,
+.apexcharts-menu-icon svg {
+  fill: #6E8192;
+}
+
+.apexcharts-selection-icon svg {
+  fill: #444;
+  transform: scale(0.76)
+}
+
+.apexcharts-theme-dark .apexcharts-zoom-icon svg,
+.apexcharts-theme-dark .apexcharts-zoomin-icon svg,
+.apexcharts-theme-dark .apexcharts-zoomout-icon svg,
+.apexcharts-theme-dark .apexcharts-reset-icon svg,
+.apexcharts-theme-dark .apexcharts-pan-icon svg,
+.apexcharts-theme-dark .apexcharts-selection-icon svg,
+.apexcharts-theme-dark .apexcharts-menu-icon svg,
+.apexcharts-theme-dark .apexcharts-toolbar-custom-icon svg {
+  fill: #f3f4f5;
+}
+
+.apexcharts-canvas .apexcharts-zoom-icon.apexcharts-selected svg,
+.apexcharts-canvas .apexcharts-selection-icon.apexcharts-selected svg,
+.apexcharts-canvas .apexcharts-reset-zoom-icon.apexcharts-selected svg {
+  fill: #008FFB;
+}
+
+.apexcharts-theme-light .apexcharts-selection-icon:not(.apexcharts-selected):hover svg,
+.apexcharts-theme-light .apexcharts-zoom-icon:not(.apexcharts-selected):hover svg,
+.apexcharts-theme-light .apexcharts-zoomin-icon:hover svg,
+.apexcharts-theme-light .apexcharts-zoomout-icon:hover svg,
+.apexcharts-theme-light .apexcharts-reset-icon:hover svg,
+.apexcharts-theme-light .apexcharts-menu-icon:hover svg {
+  fill: #333;
+}
+
+.apexcharts-selection-icon,
+.apexcharts-menu-icon {
+  position: relative;
+}
+
+.apexcharts-reset-icon {
+  margin-left: 5px;
+}
+
+.apexcharts-zoom-icon,
+.apexcharts-reset-icon,
+.apexcharts-menu-icon {
+  transform: scale(0.85);
+}
+
+.apexcharts-zoomin-icon,
+.apexcharts-zoomout-icon {
+  transform: scale(0.7)
+}
+
+.apexcharts-zoomout-icon {
+  margin-right: 3px;
+}
+
+.apexcharts-pan-icon {
+  transform: scale(0.62);
+  position: relative;
+  left: 1px;
+  top: 0px;
+}
+
+.apexcharts-pan-icon svg {
+  fill: #fff;
+  stroke: #6E8192;
+  stroke-width: 2;
+}
+
+.apexcharts-pan-icon.apexcharts-selected svg {
+  stroke: #008FFB;
+}
+
+.apexcharts-pan-icon:not(.apexcharts-selected):hover svg {
+  stroke: #333;
+}
+
+.apexcharts-toolbar {
+  position: absolute;
+  z-index: 11;
+  max-width: 176px;
+  text-align: right;
+  border-radius: 3px;
+  padding: 0px 6px 2px 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.apexcharts-menu {
+  background: #fff;
+  position: absolute;
+  top: 100%;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 3px;
+  right: 10px;
+  opacity: 0;
+  min-width: 110px;
+  transition: 0.15s ease all;
+  pointer-events: none;
+}
+
+.apexcharts-menu.apexcharts-menu-open {
+  opacity: 1;
+  pointer-events: all;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-menu-item {
+  padding: 6px 7px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.apexcharts-theme-light .apexcharts-menu-item:hover {
+  background: #eee;
+}
+
+.apexcharts-theme-dark .apexcharts-menu {
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .apexcharts-canvas:hover .apexcharts-toolbar {
+    opacity: 1;
+  }
+}
+
+.apexcharts-datalabel.apexcharts-element-hidden {
+  opacity: 0;
+}
+
+.apexcharts-pie-label,
+.apexcharts-datalabels,
+.apexcharts-datalabel,
+.apexcharts-datalabel-label,
+.apexcharts-datalabel-value {
+  cursor: default;
+  pointer-events: none;
+}
+
+.apexcharts-pie-label-delay {
+  opacity: 0;
+  animation-name: opaque;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+}
+
+.apexcharts-canvas .apexcharts-element-hidden {
+  opacity: 0;
+}
+
+.apexcharts-hide .apexcharts-series-points {
+  opacity: 0;
+}
+
+.apexcharts-gridline,
+.apexcharts-annotation-rect,
+.apexcharts-tooltip .apexcharts-marker,
+.apexcharts-area-series .apexcharts-area,
+.apexcharts-line,
+.apexcharts-zoom-rect,
+.apexcharts-toolbar svg,
+.apexcharts-area-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,
+.apexcharts-line-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,
+.apexcharts-radar-series path,
+.apexcharts-radar-series polygon {
+  pointer-events: none;
+}
+
+
+/* markers */
+
+.apexcharts-marker {
+  transition: 0.15s ease all;
+}
+
+@keyframes opaque {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* Resize generated styles */
+
+@keyframes resizeanim {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.resize-triggers {
+  animation: 1ms resizeanim;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.resize-triggers,
+.resize-triggers>div,
+.contract-trigger:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.resize-triggers>div {
+  background: #eee;
+  overflow: auto;
+}
+
+.contract-trigger:before {
+  width: 200%;
+  height: 200%;
+}</style><script src="./JavaScript Realtime Chart Example – ApexCharts.js_files/ionicons.uhp57gzi.js.download" type="module" crossorigin="true" data-resources-url="https://unpkg.com/ionicons@4.4.6/dist/ionicons/" data-namespace="ionicons"></script><style></style><style type="text/css">
+        #bu-quicksearchdiv * {
+            box-sizing: content-box;
+        }
+
+        #bu-quicksearchdiv svg {
+            box-sizing: content-box;
+        }
+
+        #bu-disabledpopup * {
+            box-sizing: content-box;
+        }
+
+        #bu-search:before {
+            left: -4px !important;
+            top: 38% !important;
+            height: 6px !important;
+            width: 6px !important;
+            border: 1px solid #ddd !important;
+            border-right: none !important;
+            border-top: none !important;
+            content: ' ' !important;
+            background: white !important;
+            position: absolute !important;
+            transform: rotate(45deg) !important;
+        }
+
+        #bu-disabledpopup:before {
+            left: -4px !important;
+            top: 38% !important;
+            height: 6px !important;
+            width: 6px !important;
+            border: 1px solid #ddd !important;
+            border-right: none !important;
+            border-top: none !important;
+            content: ' ' !important;
+            background: white !important;
+            position: absolute !important;
+            transform: rotate(45deg) !important;
+        }
+
+        .topArrow #bu-search:before {
+            left: 50% !important;
+            top: -4px !important;
+            height: 6px !important;
+            width: 6px !important;
+            border: 1px solid #ddd !important;
+            border-top: none !important;
+            border-left: none !important;
+            content: ' ' !important;
+            background: white !important;
+            position: absolute !important;
+            transform: rotate(225deg) !important;
+        }
+
+        .topArrow #bu-disabledpopup:before {
+            left: 50% !important;
+            top: -4px !important;
+            height: 6px !important;
+            width: 6px !important;
+            border: 1px solid #ddd !important;
+            border-top: none !important;
+            border-left: none !important;
+            content: ' ' !important;
+            background: white !important;
+            position: absolute !important;
+            transform: rotate(225deg) !important;
+        }
+
+        #bu-disabledpopup:hover:before,
+        #bu-search:hover:before,
+        #bu-moreoptions:hover,
+        #bu-search:hover,
+        #bu-copy:hover,
+        #bu-disabledpopup:hover,
+        #bu-lookup:hover,
+        #bu-disableFeature:hover {
+            background-color: #ececec !important;
+        }
+
+        #bu-disabledpopup:active:before,
+        #bu-search:active:before,
+        #bu-moreoptions:active,
+        #bu-search:active,
+        #bu-copy:active,
+        #bu-disabledpopup:active,
+        #bu-lookup:active,
+        #bu-disableFeature:active {
+            background-color: #dddddd !important;
+        }
+    </style></head><body class="page-template page-template-template-demo page-template-template-demo-php page page-id-1112 page-child parent-pageid-17" style=""><div role="dialog" aria-live="polite" aria-label="cookieconsent" aria-describedby="cookieconsent:desc" class="cc-window cc-banner cc-type-info cc-theme-classic cc-bottom cc-color-override--1136785167 " style=""><!--googleoff: all--><span id="cookieconsent:desc" class="cc-message">This website uses cookies to ensure you get the best experience on our website. <a aria-label="learn more about cookies" role="button" tabindex="0" class="cc-link" href="https://apexcharts.com/privacy-policy" rel="noopener noreferrer nofollow" target="_blank">Learn more</a></span><div class="cc-compliance"><a aria-label="dismiss cookie message" role="button" tabindex="0" class="cc-btn cc-dismiss">Got it!</a></div><!--googleon: all--></div><div id="page-wrap" class="scrolled"><div id="header-top" class="scrolled"><div class="container"> <a class="logo" href="https://apexcharts.com/"><div class="white img"> <noscript><img src="https://apexcharts.com/wp-content/themes/apexcharts/img/apexcharts-logo-white-trimmed.svg" alt="ApexCharts" /></noscript><img class=" lazyloaded" src="./JavaScript Realtime Chart Example – ApexCharts.js_files/apexcharts-logo-white-trimmed.svg" data-src="https://apexcharts.com/wp-content/themes/apexcharts/img/apexcharts-logo-white-trimmed.svg" alt="ApexCharts"> <span>APEXCHARTS</span></div><div class="normal img"> <noscript><img src="https://apexcharts.com/wp-content/themes/apexcharts/img/apexcharts-logo-trimmed.svg" alt="ApexCharts" /></noscript><img class=" ls-is-cached lazyloaded" src="./JavaScript Realtime Chart Example – ApexCharts.js_files/apexcharts-logo-trimmed.svg" data-src="https://apexcharts.com/wp-content/themes/apexcharts/img/apexcharts-logo-trimmed.svg" alt="ApexCharts"> <span>APEXCHARTS</span></div> </a><nav id="top-nav-lg" role="navigation"><ul><li><a href="https://apexcharts.com/javascript-chart-demos">DEMOS</a></li><li><a href="https://apexcharts.com/features">FEATURES</a></li><li><a href="https://apexcharts.com/docs/installation">DOCS</a></li><li><a href="https://apexcharts.com/downloads/apexcharts-bundle.zip" class="btn btn--link btn--border-white">DOWNLOAD</a></li></ul></nav><div id="top-nav-sm"><nav class="pushy pushy-left" style="visibility: visible;"><ul><li class="pushy-link"><a href="https://apexcharts.com/javascript-chart-demos">DEMOS</a></li><li class="pushy-link"><a href="https://apexcharts.com/features">FEATURES</a></li><li class="pushy-link"><a href="https://apexcharts.com/docs/installation">DOCS</a></li></ul></nav><div class="site-overlay"></div><div class="menu-btn">☰</div></div></div></div><header class="banner-inner"></header><article class=" post page-template-gallery page-grandparent-13" id="post-1112"><div class="entry container"><div class="sidebar-responsive"><div class="sidebar-menu-btn" style="">☰</div><div class="sidebar-close-btn" style=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div><div class="sidebar-content ss-container" ss-container=""><div class="ss-wrapper"><div class="ss-content"><div class="block"> <a class="btn btn--base" href="https://www.patreon.com/junedchhipa">SUPPORT APEXCHARTS</a></div><div class="block"><nav id="bellows-main-3" class="bellows bellows-main bellows-source-menu bellows-align-full bellows-skin-none"><ul id="menu-sidebar-javascript-chart-demos" class="bellows-nav" data-bellows-config="main"><li id="menu-item-368" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-current-menu-ancestor bellows-current-menu-parent bellows-menu-item-has-children bellows-menu-item-368 bellows-item-level-0 bellows-active"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#" class="bellows-target"><span class="bellows-target-title bellows-target-text">Line Charts</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-chevron-down"></i><i class="bellows-subtoggle-icon-collapse fa fa-chevron-up"></i></span></a><ul class="bellows-submenu" style="display: block;"><li id="menu-item-354" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-354 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/basic/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Basic</span></a></li><li id="menu-item-362" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-362 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/data-labels/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Line with Data Labels</span></a></li><li id="menu-item-361" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-361 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/zoomable-timeseries/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Zoomable Timeseries</span></a></li><li id="menu-item-1293" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1293 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/line-chart-annotations/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Line Chart with Annotations</span></a></li><li id="menu-item-1302" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1302 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/syncing-charts/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Synchronized charts</span></a></li><li id="menu-item-1945" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1945 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/brush-chart/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Brush chart</span></a></li><li id="menu-item-3012" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-3012 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/stepline/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Stepline</span></a></li><li id="menu-item-356" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-356 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/gradient/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Gradient Line</span></a></li><li id="menu-item-358" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-358 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/null-values/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Missing / null values</span></a></li><li id="menu-item-1135" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-current-menu-item bellows-page_item bellows-page-item-1112 bellows-current_page_item bellows-menu-item-1135 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Realtime</span></a></li><li id="menu-item-355" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-355 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/dashed/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Dashed</span></a></li></ul></li><li id="menu-item-417" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-417 bellows-item-level-0"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#" class="bellows-target"><span class="bellows-target-title bellows-target-text">Area Charts</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-chevron-down"></i><i class="bellows-subtoggle-icon-collapse fa fa-chevron-up"></i></span></a><ul class="bellows-submenu"><li id="menu-item-346" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-346 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/area-charts/basic/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Basic</span></a></li><li id="menu-item-420" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-420 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/area-charts/spline/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Spline Area</span></a></li><li id="menu-item-1276" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1276 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/area-charts/datetime-x-axis/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Datetime X-Axis</span></a></li><li id="menu-item-419" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-419 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/area-charts/negative/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Negative</span></a></li><li id="menu-item-1418" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1418 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/area-charts/github-style/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Github Style</span></a></li><li id="menu-item-421" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-421 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/area-charts/stacked/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Stacked</span></a></li><li id="menu-item-418" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-418 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/area-charts/irregular-timeseries/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Irregular Timeseries</span></a></li><li id="menu-item-347" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-347 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/area-charts/chart-with-missing-data-or-null-values/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Missing / Null values</span></a></li></ul></li><li id="menu-item-504" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-504 bellows-item-level-0"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#" class="bellows-target"><span class="bellows-target-title bellows-target-text">Column Charts</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-chevron-down"></i><i class="bellows-subtoggle-icon-collapse fa fa-chevron-up"></i></span></a><ul class="bellows-submenu"><li id="menu-item-497" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-497 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/column-charts/basic/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Basic</span></a></li><li id="menu-item-498" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-498 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/column-charts/column-with-data-labels/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Column with Data Labels</span></a></li><li id="menu-item-502" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-502 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/column-charts/stacked/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Stacked Columns</span></a></li><li id="menu-item-1153" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1153 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/column-charts/stacked-column-100/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Stacked Columns 100</span></a></li><li id="menu-item-500" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-500 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/column-charts/column-with-rotated-xaxis-labels/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Column with Rotated Labels</span></a></li><li id="menu-item-499" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-499 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/column-charts/column-with-negative-values/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Column with Negative Values</span></a></li><li id="menu-item-1486" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1486 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/column-charts/dynamic-loaded-chart/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Dynamic Loaded Chart</span></a></li><li id="menu-item-501" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-501 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/column-charts/distributed/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Distributed Columns</span></a></li></ul></li><li id="menu-item-503" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-503 bellows-item-level-0"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#" class="bellows-target"><span class="bellows-target-title bellows-target-text">Bar Charts</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-chevron-down"></i><i class="bellows-subtoggle-icon-collapse fa fa-chevron-up"></i></span></a><ul class="bellows-submenu"><li id="menu-item-490" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-490 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/bar-charts/basic/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Basic</span></a></li><li id="menu-item-491" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-491 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/bar-charts/grouped/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Grouped</span></a></li><li id="menu-item-494" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-494 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/bar-charts/stacked/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Stacked</span></a></li><li id="menu-item-1159" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1159 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/bar-charts/stacked-100/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Stacked Bars 100</span></a></li><li id="menu-item-489" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-489 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/bar-charts/bar-with-negative-values/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Bar with Negative Values</span></a></li><li id="menu-item-3732" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-3732 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/bar-charts/reversed-bar-chart/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Reversed Bar Chart</span></a></li><li id="menu-item-1975" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1975 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/bar-charts/custom-datalabels/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Custom DataLabels Bar</span></a></li><li id="menu-item-495" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-495 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/bar-charts/patterned/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Patterned</span></a></li><li id="menu-item-488" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-488 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/bar-charts/bar-with-images/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Bar with Images</span></a></li></ul></li><li id="menu-item-509" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-509 bellows-item-level-0"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#" class="bellows-target"><span class="bellows-target-title bellows-target-text">Mixed / Combo Charts</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-chevron-down"></i><i class="bellows-subtoggle-icon-collapse fa fa-chevron-up"></i></span></a><ul class="bellows-submenu"><li id="menu-item-535" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-535 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/mixed-charts/line-column/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Line Column</span></a></li><li id="menu-item-533" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-533 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/mixed-charts/multiple-yaxis/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Multiple Y-Axis</span></a></li><li id="menu-item-1282" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1282 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/mixed-charts/line-area/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Line &amp; Area</span></a></li><li id="menu-item-534" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-534 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/mixed-charts/line-column-area/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Line Column Area</span></a></li><li id="menu-item-2098" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-2098 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/mixed-charts/line-scatter/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Line Scatter</span></a></li></ul></li><li id="menu-item-3495" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-3495 bellows-item-level-0"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#" class="bellows-target"><span class="bellows-target-title bellows-target-text">Timeline Charts</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-chevron-down"></i><i class="bellows-subtoggle-icon-collapse fa fa-chevron-up"></i></span></a><ul class="bellows-submenu"><li id="menu-item-3493" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-3493 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/timeline-charts/basic/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Basic</span></a></li><li id="menu-item-3492" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-3492 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/timeline-charts/distributed/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Custom Colors</span></a></li><li id="menu-item-3491" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-3491 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/timeline-charts/multi-series/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Multi-series</span></a></li><li id="menu-item-3490" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-3490 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/timeline-charts/advanced/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Advanced (Multiple ranges)</span></a></li><li id="menu-item-4600" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-4600 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/timeline-charts/multiple-series-group-rows/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Multiple series – Group rows</span></a></li></ul></li><li id="menu-item-1994" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-1994 bellows-item-level-0"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#" class="bellows-target"><span class="bellows-target-title bellows-target-text">Candlestick Charts</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-chevron-down"></i><i class="bellows-subtoggle-icon-collapse fa fa-chevron-up"></i></span></a><ul class="bellows-submenu"><li id="menu-item-1838" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1838 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/candlestick-charts/basic/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Basic</span></a></li><li id="menu-item-1837" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1837 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/candlestick-charts/combo/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Combo</span></a></li><li id="menu-item-3767" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-3767 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/candlestick-charts/category-x-axis/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Category x-axis</span></a></li><li id="menu-item-3543" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-3543 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/candlestick-charts/candlestick-with-line/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Candlestick with line</span></a></li></ul></li><li id="menu-item-4704" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-4704 bellows-item-level-0"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#" class="bellows-target"><span class="bellows-target-title bellows-target-text">Box &amp; Whisker Charts</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-chevron-down"></i><i class="bellows-subtoggle-icon-collapse fa fa-chevron-up"></i></span></a><ul class="bellows-submenu"><li id="menu-item-4706" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-4706 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/box-whisker-charts/basic/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Basic</span></a></li><li id="menu-item-4705" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-4705 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/box-whisker-charts/boxplot-scatter/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Boxplot-Scatter</span></a></li></ul></li><li id="menu-item-505" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-505 bellows-item-level-0"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#" class="bellows-target"><span class="bellows-target-title bellows-target-text">Pie / Donuts</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-chevron-down"></i><i class="bellows-subtoggle-icon-collapse fa fa-chevron-up"></i></span></a><ul class="bellows-submenu"><li id="menu-item-511" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-511 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/pie-charts/simple-pie-chart/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Simple Pie</span></a></li><li id="menu-item-512" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-512 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/pie-charts/simple-donut/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Simple Donut</span></a></li><li id="menu-item-1917" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1917 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/pie-charts/update-donut/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Donut Update</span></a></li><li id="menu-item-517" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-517 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/pie-charts/monochrome-pie/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Monochrome Pie</span></a></li><li id="menu-item-515" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-515 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/pie-charts/gradient-donut/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Gradient Donut</span></a></li><li id="menu-item-4642" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-4642 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/pie-charts/semi-donut/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Semi Donut</span></a></li><li id="menu-item-514" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-514 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/pie-charts/donut-with-pattern/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Donut with Pattern</span></a></li><li id="menu-item-516" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-516 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/pie-charts/pie-with-image/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Pie with Image</span></a></li></ul></li><li id="menu-item-2973" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-2973 bellows-item-level-0"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#" class="bellows-target"><span class="bellows-target-title bellows-target-text">Radar Charts</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-chevron-down"></i><i class="bellows-subtoggle-icon-collapse fa fa-chevron-up"></i></span></a><ul class="bellows-submenu"><li id="menu-item-2972" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-2972 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/radar-charts/basic/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Basic</span></a></li><li id="menu-item-2971" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-2971 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/radar-charts/radar-multiple-series/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Radar – Multiple Series</span></a></li><li id="menu-item-2970" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-2970 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/radar-charts/radar-with-polygon-fill/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Radar with Polygon-fill</span></a></li></ul></li><li id="menu-item-4560" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-4560 bellows-item-level-0"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#" class="bellows-target"><span class="bellows-target-title bellows-target-text">Polar Area Charts</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-chevron-down"></i><i class="bellows-subtoggle-icon-collapse fa fa-chevron-up"></i></span></a><ul class="bellows-submenu"><li id="menu-item-4561" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-4561 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/polar-area-charts/basic/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Basic</span></a></li><li id="menu-item-4562" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-4562 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/polar-area-charts/monochrome/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Monochrome</span></a></li></ul></li><li id="menu-item-506" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-506 bellows-item-level-0"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#" class="bellows-target"><span class="bellows-target-title bellows-target-text">RadialBars / Circle Charts</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-chevron-down"></i><i class="bellows-subtoggle-icon-collapse fa fa-chevron-up"></i></span></a><ul class="bellows-submenu"><li id="menu-item-523" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-523 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/radialbar-charts/basic/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Basic</span></a></li><li id="menu-item-518" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-518 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/radialbar-charts/multiple-radialbars/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Multiple</span></a></li><li id="menu-item-1187" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1187 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/radialbar-charts/custom-angle-circle/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Custom Angle Circle</span></a></li><li id="menu-item-1597" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1597 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/radialbar-charts/gradient/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Gradient</span></a></li><li id="menu-item-519" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-519 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/radialbar-charts/radialbar-with-image/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Radialbars with Image</span></a></li><li id="menu-item-1181" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1181 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/radialbar-charts/stroked-gauge/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Stroked Gauge</span></a></li><li id="menu-item-1184" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1184 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/radialbar-charts/semi-circle-gauge/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Semi Circle Gauge</span></a></li></ul></li><li id="menu-item-508" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-508 bellows-item-level-0"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#" class="bellows-target"><span class="bellows-target-title bellows-target-text">Bubble Charts</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-chevron-down"></i><i class="bellows-subtoggle-icon-collapse fa fa-chevron-up"></i></span></a><ul class="bellows-submenu"><li id="menu-item-531" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-531 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/bubble-charts/simple/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Simple</span></a></li><li id="menu-item-528" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-528 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/bubble-charts/3d-bubble/" class="bellows-target"><span class="bellows-target-title bellows-target-text">3D Bubble</span></a></li></ul></li><li id="menu-item-507" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-507 bellows-item-level-0"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#" class="bellows-target"><span class="bellows-target-title bellows-target-text">Scatter Charts</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-chevron-down"></i><i class="bellows-subtoggle-icon-collapse fa fa-chevron-up"></i></span></a><ul class="bellows-submenu"><li id="menu-item-526" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-526 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/scatter-charts/basic/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Basic</span></a></li><li id="menu-item-527" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-527 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/scatter-charts/datetime/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Scatter – Datetime</span></a></li><li id="menu-item-3152" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-3152 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/scatter-charts/scatter-images/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Scatter – Images</span></a></li></ul></li><li id="menu-item-1225" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-1225 bellows-item-level-0"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#" class="bellows-target"><span class="bellows-target-title bellows-target-text">Heatmap Charts</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-chevron-down"></i><i class="bellows-subtoggle-icon-collapse fa fa-chevron-up"></i></span></a><ul class="bellows-submenu"><li id="menu-item-1213" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1213 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/heatmap-charts/basic/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Basic</span></a></li><li id="menu-item-1210" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1210 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/heatmap-charts/multiple-series/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Multiiple Colors for each Series</span></a></li><li id="menu-item-2130" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-2130 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/heatmap-charts/multiple-series-colors-flipped/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Multiple Colors Flipped</span></a></li><li id="menu-item-1212" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1212 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/heatmap-charts/color-range/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Color Range</span></a></li><li id="menu-item-1211" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1211 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/heatmap-charts/rounded/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Rounded (Range without Shades)</span></a></li></ul></li><li id="menu-item-4563" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-4563 bellows-item-level-0"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#" class="bellows-target"><span class="bellows-target-title bellows-target-text">Treemap Charts</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-chevron-down"></i><i class="bellows-subtoggle-icon-collapse fa fa-chevron-up"></i></span></a><ul class="bellows-submenu"><li id="menu-item-4564" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-4564 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/treemap-charts/basic" class="bellows-target"><span class="bellows-target-title bellows-target-text">Basic</span></a></li><li id="menu-item-4565" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-4565 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/treemap-charts/treemap-multiple-series" class="bellows-target"><span class="bellows-target-title bellows-target-text">Multiple Series</span></a></li><li id="menu-item-4566" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-4566 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/treemap-charts/color-range" class="bellows-target"><span class="bellows-target-title bellows-target-text">Color range</span></a></li><li id="menu-item-4567" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-4567 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/treemap-charts/distributed" class="bellows-target"><span class="bellows-target-title bellows-target-text">Distributed</span></a></li></ul></li><li id="menu-item-510" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-510 bellows-item-level-0"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#" class="bellows-target"><span class="bellows-target-title bellows-target-text">Sparklines</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-chevron-down"></i><i class="bellows-subtoggle-icon-collapse fa fa-chevron-up"></i></span></a><ul class="bellows-submenu"><li id="menu-item-859" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-859 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/sparklines/basic/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Basic</span></a></li></ul></li><li id="menu-item-1253" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-1253 bellows-item-level-0"><a href="https://apexcharts.com/javascript-chart-demos/line-charts/realtime/#" class="bellows-target"><span class="bellows-target-title bellows-target-text">Dashboards</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-chevron-down"></i><i class="bellows-subtoggle-icon-collapse fa fa-chevron-up"></i></span></a><ul class="bellows-submenu"><li id="menu-item-1254" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1254 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/dashboards/modern/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Modern</span></a></li><li id="menu-item-2042" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-2042 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/dashboards/realtime/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Realtime</span></a></li><li id="menu-item-1258" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1258 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/dashboards/material/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Material</span></a></li><li id="menu-item-1262" class="bellows-menu-item bellows-menu-item-type-post_type bellows-menu-item-object-page bellows-menu-item-1262 bellows-item-level-1"><a href="https://apexcharts.com/javascript-chart-demos/dashboards/dark/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Dark</span></a></li></ul></li></ul></nav></div></div></div><div class="ss-scroll" style="height: 59.6756%; top: 0%; right: -265px;"></div></div></div><div class="content-area content-with-right-sidebar"><div class="breadcrumbs"> <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to Chart Demos." href="https://apexcharts.com/javascript-chart-demos/" class="post post-page"><span property="name">Chart Demos</span></a><meta property="position" content="1"></span> &gt; <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to Line Charts." href="https://apexcharts.com/javascript-chart-demos/line-charts/" class="post post-page"><span property="name">Line Charts</span></a><meta property="position" content="2"></span> &gt; <span property="itemListElement" typeof="ListItem"><span property="name">Realtime</span><meta property="position" content="3"></span></div><h2 class="section-title"></h2><div class="gallery-demo-chart"> <iframe src="./JavaScript Realtime Chart Example – ApexCharts.js_files/realtime.html" scrolling="no"></iframe></div><div id="wide-cta-carbonad"> <script type="text/javascript" src="./JavaScript Realtime Chart Example – ApexCharts.js_files/carbon.js.download" id="_carbonads_js"></script> </div><p class="samples-script-code"><pre><code class="lang-javascript hljs">
+      
+        <span class="hljs-keyword">var</span> options = {
+          <span class="hljs-attr">series</span>: [{
+          <span class="hljs-attr">data</span>: data.slice()
+        }],
+          <span class="hljs-attr">chart</span>: {
+          <span class="hljs-attr">id</span>: <span class="hljs-string">'realtime'</span>,
+          <span class="hljs-attr">height</span>: <span class="hljs-number">350</span>,
+          <span class="hljs-attr">type</span>: <span class="hljs-string">'line'</span>,
+          <span class="hljs-attr">animations</span>: {
+            <span class="hljs-attr">enabled</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">easing</span>: <span class="hljs-string">'linear'</span>,
+            <span class="hljs-attr">dynamicAnimation</span>: {
+              <span class="hljs-attr">speed</span>: <span class="hljs-number">1000</span>
+            }
+          },
+          <span class="hljs-attr">toolbar</span>: {
+            <span class="hljs-attr">show</span>: <span class="hljs-literal">false</span>
+          },
+          <span class="hljs-attr">zoom</span>: {
+            <span class="hljs-attr">enabled</span>: <span class="hljs-literal">false</span>
+          }
+        },
+        <span class="hljs-attr">dataLabels</span>: {
+          <span class="hljs-attr">enabled</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">stroke</span>: {
+          <span class="hljs-attr">curve</span>: <span class="hljs-string">'smooth'</span>
+        },
+        <span class="hljs-attr">title</span>: {
+          <span class="hljs-attr">text</span>: <span class="hljs-string">'Dynamic Updating Chart'</span>,
+          <span class="hljs-attr">align</span>: <span class="hljs-string">'left'</span>
+        },
+        <span class="hljs-attr">markers</span>: {
+          <span class="hljs-attr">size</span>: <span class="hljs-number">0</span>
+        },
+        <span class="hljs-attr">xaxis</span>: {
+          <span class="hljs-attr">type</span>: <span class="hljs-string">'datetime'</span>,
+          <span class="hljs-attr">range</span>: XAXISRANGE,
+        },
+        <span class="hljs-attr">yaxis</span>: {
+          <span class="hljs-attr">max</span>: <span class="hljs-number">100</span>
+        },
+        <span class="hljs-attr">legend</span>: {
+          <span class="hljs-attr">show</span>: <span class="hljs-literal">false</span>
+        },
+        };
+
+        <span class="hljs-keyword">var</span> chart = <span class="hljs-keyword">new</span> ApexCharts(<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#chart"</span>), options);
+        chart.render();
+      
+      
+        <span class="hljs-built_in">window</span>.setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        getNewSeries(lastDate, {
+          <span class="hljs-attr">min</span>: <span class="hljs-number">10</span>,
+          <span class="hljs-attr">max</span>: <span class="hljs-number">90</span>
+        })
+      
+        chart.updateSeries([{
+          <span class="hljs-attr">data</span>: data
+        }])
+      }, <span class="hljs-number">1000</span>)
+      
+    </code></pre></p><p></p></div><div class="sidebar-right"><div class="featured-sponsor"></div></div></div></article></div> <noscript><style>.lazyload{display:none;}</style></noscript><script data-noptimize="1">window.lazySizesConfig=window.lazySizesConfig||{};window.lazySizesConfig.loadMode=1;</script><script async="" data-noptimize="1" src="./JavaScript Realtime Chart Example – ApexCharts.js_files/lazysizes.min.js.download"></script> <script src="./JavaScript Realtime Chart Example – ApexCharts.js_files/wp-polyfill.min.js.download" id="wp-polyfill-js"></script> <script id="wp-polyfill-js-after">( 'fetch' in window ) || document.write( '<script src="https://apexcharts.com/wp-includes/js/dist/vendor/wp-polyfill-fetch.min.js?ver=3.0.0"></scr' + 'ipt>' );( document.contains ) || document.write( '<script src="https://apexcharts.com/wp-includes/js/dist/vendor/wp-polyfill-node-contains.min.js?ver=3.42.0"></scr' + 'ipt>' );( window.DOMRect ) || document.write( '<script src="https://apexcharts.com/wp-includes/js/dist/vendor/wp-polyfill-dom-rect.min.js?ver=3.42.0"></scr' + 'ipt>' );( window.URL && window.URL.prototype && window.URLSearchParams ) || document.write( '<script src="https://apexcharts.com/wp-includes/js/dist/vendor/wp-polyfill-url.min.js?ver=3.6.4"></scr' + 'ipt>' );( window.FormData && window.FormData.prototype.keys ) || document.write( '<script src="https://apexcharts.com/wp-includes/js/dist/vendor/wp-polyfill-formdata.min.js?ver=3.0.12"></scr' + 'ipt>' );( Element.prototype.matches && Element.prototype.closest ) || document.write( '<script src="https://apexcharts.com/wp-includes/js/dist/vendor/wp-polyfill-element-closest.min.js?ver=2.0.2"></scr' + 'ipt>' );( 'objectFit' in document.documentElement.style ) || document.write( '<script src="https://apexcharts.com/wp-includes/js/dist/vendor/wp-polyfill-object-fit.min.js?ver=2.3.4"></scr' + 'ipt>' );</script> <script src="./JavaScript Realtime Chart Example – ApexCharts.js_files/hooks.min.js.download" id="wp-hooks-js"></script> <script src="./JavaScript Realtime Chart Example – ApexCharts.js_files/i18n.min.js.download" id="wp-i18n-js"></script> <script src="./JavaScript Realtime Chart Example – ApexCharts.js_files/lodash.min.js.download" id="lodash-js"></script> <script src="./JavaScript Realtime Chart Example – ApexCharts.js_files/url.min.js.download" id="wp-url-js"></script> <script src="./JavaScript Realtime Chart Example – ApexCharts.js_files/api-fetch.min.js.download" id="wp-api-fetch-js"></script> <script id="wp-api-fetch-js-after">wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://apexcharts.com/wp-json/" ) );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "7968239331" );
+wp.apiFetch.use( wp.apiFetch.nonceMiddleware );
+wp.apiFetch.use( wp.apiFetch.mediaUploadMiddleware );
+wp.apiFetch.nonceEndpoint = "https://apexcharts.com/wp-admin/admin-ajax.php?action=rest-nonce";</script> <script src="./JavaScript Realtime Chart Example – ApexCharts.js_files/apexcharts" id="apexcharts-js"></script> <script src="./JavaScript Realtime Chart Example – ApexCharts.js_files/feather-icons" id="feather-icons-js"></script> <script src="./JavaScript Realtime Chart Example – ApexCharts.js_files/ionicons.js.download" id="ionicons-js"></script> <script src="./JavaScript Realtime Chart Example – ApexCharts.js_files/cookieconsent.min.js.download" id="cookie-consent-js"></script> <script src="./JavaScript Realtime Chart Example – ApexCharts.js_files/isInViewport.min.js.download" id="isinviewport-js"></script> <script defer="" src="./JavaScript Realtime Chart Example – ApexCharts.js_files/autoptimize_7a7561d3745bbc59149c60e8a90cbdd6.js.download"></script><svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;"><defs id="SvgjsDefs1002"></defs><polyline id="SvgjsPolyline1003" points="0,0"></polyline><path id="SvgjsPath1004" d="M0 0 "></path></svg><div id="bu-quicksearch" style="position: fixed; z-index: 10000; display: none;">
+    <div id="bu-disabledpopup" style="cursor: pointer;display: block;position: relative;width: fit-content;padding: 8px;line-height: 16px;border: 1px solid #ddd;border-radius: 6px;background-color: #fff;font-style: normal;font-weight: normal;color:  #444444;font-size: 13px;font-family: Roboto,Arial,Helvetica,sans-serif;box-shadow: 0px 3px 4px 0px rgba(0,0,0,.14);">
+        <span style="
+                float: left;
+                padding: 0px 12px 0px 4px;
+            ">
+            You've turned off quick searches.</span>
+            <span id="bu-undo" style="padding: 0px 4px 0px 8px;"><span style="
+                width: 15px;
+                height: 15px;
+                float: left;
+            "><svg enable-background="new 0 0 16 16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m14.259 2.75c-1.159-1.16-2.688-1.744-4.207-1.743-1.52-.001-3.049.583-4.208 1.743l-2.843 2.827v-2.57c0-.552-.448-1-1-1h-.016c-.552 0-.984.448-.984 1v5c0 .552.432.993.984.993h5.016c.552 0 1-.441 1-.993s-.448-1-1-1h-2.601l2.859-2.843c.774-.773 1.779-1.156 2.793-1.157 1.014.001 2.019.384 2.793 1.157.772.774 1.155 1.778 1.156 2.793-.001 1.014-.384 2.019-1.157 2.793l-4.543 4.543c-.391.391-.391 1.024 0 1.414.391.391 1.024.391 1.414 0l4.543-4.543c1.16-1.159 1.743-2.688 1.742-4.207.002-1.52-.582-3.048-1.741-4.207z" fill="#767676"></path>
+                    <path d="m0 0h16v16h-16z" fill="none"></path>
+                </svg></span>Undo</span>
+    </div>
+    <div id="bu-quicksearchdiv" style="display: inline-block;position: relative;height: 32px;border: 1px solid #ddd;border-radius: 6px;background-color: #fff;font-style: normal;font-weight: normal;color:  #444444;font-size: 13px;font-family: Roboto,Arial,Helvetica,sans-serif;box-shadow: 0px 3px 4px 0px rgba(0,0,0,.14);">
+        <div id="bu-search" style="border-radius: 5px 0px 0px 5px;height:-webkit-fill-available;height:-moz-fit-content;float: left;line-height: 15px;text-align: center;cursor: pointer;box-sizing: border-box;">
+            <span style="
+                float: left;
+                padding: 8px 12px 8px 8px;
+                height: -webkit-fill-available;
+            ">Web
+                search</span>
+        </div>
+        <div style="
+                        border-left: 1px solid #ddd;
+                        float: left;
+                        margin: 0px;
+                        top: 0;
+                        height: 32px;
+                    "></div>
+        <div style="height:-webkit-fill-available;height:-moz-fit-content;float: left;padding: 8px 12px 8px 12px;line-height: 15px;text-align: center;cursor: pointer;" id="bu-copy">
+            Copy
+        </div>
+        <div style="
+                        border-left: 1px solid #ddd;
+                        height: 32px;
+                        float: left;
+                        margin: 0px;
+                        top: 0;
+                    "></div>
+        <div id="bu-moreoptions" style="border-radius: 0px 5px 5px 0px;height:-webkit-fill-available;height:-moz-fit-content;width: 16px;float: left;padding: 8PX 8px 0px 8px;;text-align: center;cursor: pointer;position: relative;">
+            <span style="width: 16px;">
+                <svg enable-background="new 0 0 16 16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m1.5 6.5c-.828 0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5 1.5-.672 1.5-1.5-.672-1.5-1.5-1.5zm6.5 0c-.828 0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5 1.5-.672 1.5-1.5-.672-1.5-1.5-1.5zm6.5 0c-.828 0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5 1.5-.672 1.5-1.5-.672-1.5-1.5-1.5z" fill="#767676"></path>
+                    <path d="m0 0h16v16h-16z" fill="none"></path>
+                </svg></span>
+        </div>
+        <div>
+            <span style="width: 160px;border: 1px solid #ddd;border-radius: 6px;position: absolute;top: 40px;left: 105px;box-shadow: 0px 3px 4px 0px rgba(0,0,0,.14);background-color: white;overflow: hidden;" id="bu-popup">
+                <div style="padding: 8px 12px;line-height: 15px;font-size: 13px;cursor: pointer;text-align: left;" id="bu-lookup">
+                    Define
+                </div>
+                <hr style="   border: 0.5px solid #ddd;    margin: 0;    cursor: default; height: 0px;
+                        background-color: #ddd;">
+                <div style="padding: 8px 12px;line-height: 15px;font-size: 13px;cursor: pointer;text-align: left;" id="bu-disableFeature">
+                    Turn off quick searches
+                </div>
+            </span>
+        </div>
+    </div>
+
+
+
+</div></body><editor-card style="position:absolute;top:0px;left:0px;z-index:auto;display: block !important"><div dir="ltr" style="all: initial;"><div style="color: initial; font: initial; font-feature-settings: initial; font-kerning: initial; font-optical-sizing: initial; font-variation-settings: initial; forced-color-adjust: initial; text-orientation: initial; text-rendering: initial; -webkit-font-smoothing: initial; -webkit-locale: initial; -webkit-text-orientation: initial; -webkit-writing-mode: initial; writing-mode: initial; zoom: initial; place-content: initial; place-items: initial; place-self: initial; alignment-baseline: initial; animation: initial; appearance: initial; aspect-ratio: initial; backdrop-filter: initial; backface-visibility: initial; background: initial; background-blend-mode: initial; baseline-shift: initial; block-size: initial; border-block: initial; border: initial; border-radius: initial; border-collapse: initial; border-end-end-radius: initial; border-end-start-radius: initial; border-inline: initial; border-start-end-radius: initial; border-start-start-radius: initial; bottom: 0px; box-shadow: initial; box-sizing: initial; break-after: initial; break-before: initial; break-inside: initial; buffered-rendering: initial; caption-side: initial; caret-color: initial; clear: initial; clip: initial; clip-path: initial; clip-rule: initial; color-interpolation: initial; color-interpolation-filters: initial; color-rendering: initial; color-scheme: initial; columns: initial; column-fill: initial; gap: initial; column-rule: initial; column-span: initial; contain: initial; contain-intrinsic-size: initial; content: initial; content-visibility: initial; counter-increment: initial; counter-reset: initial; counter-set: initial; cursor: initial; cx: initial; cy: initial; d: initial; display: flex; dominant-baseline: initial; empty-cells: initial; fill: initial; fill-opacity: initial; fill-rule: initial; filter: initial; flex: initial; flex-flow: column-reverse; float: initial; flood-color: initial; flood-opacity: initial; grid: initial; grid-area: initial; height: initial; hyphens: initial; image-orientation: initial; image-rendering: initial; inline-size: initial; inset-block: initial; inset-inline: initial; isolation: initial; left: initial; letter-spacing: initial; lighting-color: initial; line-break: initial; list-style: initial; margin-block: initial; margin: 1em; margin-inline: initial; marker: initial; mask: initial; mask-type: initial; max-block-size: initial; max-height: initial; max-inline-size: initial; max-width: initial; min-block-size: initial; min-height: initial; min-inline-size: initial; min-width: initial; mix-blend-mode: initial; object-fit: initial; object-position: initial; offset: initial; opacity: initial; order: initial; origin-trial-test-property: initial; orphans: initial; outline: initial; outline-offset: initial; overflow-anchor: initial; overflow-wrap: initial; overflow: initial; overscroll-behavior-block: initial; overscroll-behavior-inline: initial; overscroll-behavior: initial; padding-block: initial; padding: initial; padding-inline: initial; page: initial; page-orientation: initial; paint-order: initial; perspective: initial; perspective-origin: initial; pointer-events: initial; position: fixed; quotes: initial; r: initial; resize: initial; right: 0px; ruby-position: initial; rx: initial; ry: initial; scroll-behavior: initial; scroll-margin-block: initial; scroll-margin: initial; scroll-margin-inline: initial; scroll-padding-block: initial; scroll-padding: initial; scroll-padding-inline: initial; scroll-snap-align: initial; scroll-snap-stop: initial; scroll-snap-type: initial; shape-image-threshold: initial; shape-margin: initial; shape-outside: initial; shape-rendering: initial; size: initial; speak: initial; stop-color: initial; stop-opacity: initial; stroke: initial; stroke-dasharray: initial; stroke-dashoffset: initial; stroke-linecap: initial; stroke-linejoin: initial; stroke-miterlimit: initial; stroke-opacity: initial; stroke-width: initial; tab-size: initial; table-layout: initial; text-align: initial; text-align-last: initial; text-anchor: initial; text-combine-upright: initial; text-decoration: initial; text-decoration-skip-ink: initial; text-indent: initial; text-overflow: initial; text-shadow: initial; text-size-adjust: initial; text-transform: initial; text-underline-offset: initial; text-underline-position: initial; top: initial; touch-action: initial; transform: initial; transform-box: initial; transform-origin: initial; transform-style: initial; transition: initial; user-select: initial; vector-effect: initial; vertical-align: initial; visibility: initial; -webkit-app-region: initial; border-spacing: initial; -webkit-border-image: initial; -webkit-box-align: initial; -webkit-box-decoration-break: initial; -webkit-box-direction: initial; -webkit-box-flex: initial; -webkit-box-ordinal-group: initial; -webkit-box-orient: initial; -webkit-box-pack: initial; -webkit-box-reflect: initial; -webkit-highlight: initial; -webkit-hyphenate-character: initial; -webkit-line-break: initial; -webkit-line-clamp: initial; -webkit-mask-box-image: initial; -webkit-mask: initial; -webkit-mask-composite: initial; -webkit-perspective-origin-x: initial; -webkit-perspective-origin-y: initial; -webkit-print-color-adjust: initial; -webkit-rtl-ordering: initial; -webkit-ruby-position: initial; -webkit-tap-highlight-color: initial; -webkit-text-combine: initial; -webkit-text-decorations-in-effect: initial; -webkit-text-emphasis: initial; -webkit-text-emphasis-position: initial; -webkit-text-fill-color: initial; -webkit-text-security: initial; -webkit-text-stroke: initial; -webkit-transform-origin-x: initial; -webkit-transform-origin-y: initial; -webkit-transform-origin-z: initial; -webkit-user-drag: initial; -webkit-user-modify: initial; white-space: initial; widows: initial; width: initial; will-change: initial; word-break: initial; word-spacing: initial; x: initial; y: initial; z-index: 2147483647;"></div><div style="color: initial; font: initial; font-feature-settings: initial; font-kerning: initial; font-optical-sizing: initial; font-variation-settings: initial; forced-color-adjust: initial; text-orientation: initial; text-rendering: initial; -webkit-font-smoothing: initial; -webkit-locale: initial; -webkit-text-orientation: initial; -webkit-writing-mode: initial; writing-mode: initial; zoom: initial; place-content: initial; place-items: initial; place-self: initial; alignment-baseline: initial; animation: initial; appearance: initial; aspect-ratio: initial; backdrop-filter: initial; backface-visibility: initial; background: initial; background-blend-mode: initial; baseline-shift: initial; block-size: initial; border-block: initial; border: initial; border-radius: initial; border-collapse: initial; border-end-end-radius: initial; border-end-start-radius: initial; border-inline: initial; border-start-end-radius: initial; border-start-start-radius: initial; inset: initial; box-shadow: initial; box-sizing: initial; break-after: initial; break-before: initial; break-inside: initial; buffered-rendering: initial; caption-side: initial; caret-color: initial; clear: initial; clip: initial; clip-path: initial; clip-rule: initial; color-interpolation: initial; color-interpolation-filters: initial; color-rendering: initial; color-scheme: initial; columns: initial; column-fill: initial; gap: initial; column-rule: initial; column-span: initial; contain: initial; contain-intrinsic-size: initial; content: initial; content-visibility: initial; counter-increment: initial; counter-reset: initial; counter-set: initial; cursor: initial; cx: initial; cy: initial; d: initial; display: initial; dominant-baseline: initial; empty-cells: initial; fill: initial; fill-opacity: initial; fill-rule: initial; filter: initial; flex: initial; flex-flow: initial; float: initial; flood-color: initial; flood-opacity: initial; grid: initial; grid-area: initial; height: initial; hyphens: initial; image-orientation: initial; image-rendering: initial; inline-size: initial; inset-block: initial; inset-inline: initial; isolation: initial; letter-spacing: initial; lighting-color: initial; line-break: initial; list-style: initial; margin-block: initial; margin: initial; margin-inline: initial; marker: initial; mask: initial; mask-type: initial; max-block-size: initial; max-height: initial; max-inline-size: initial; max-width: initial; min-block-size: initial; min-height: initial; min-inline-size: initial; min-width: initial; mix-blend-mode: initial; object-fit: initial; object-position: initial; offset: initial; opacity: initial; order: initial; origin-trial-test-property: initial; orphans: initial; outline: initial; outline-offset: initial; overflow-anchor: initial; overflow-wrap: initial; overflow: initial; overscroll-behavior-block: initial; overscroll-behavior-inline: initial; overscroll-behavior: initial; padding-block: initial; padding: initial; padding-inline: initial; page: initial; page-orientation: initial; paint-order: initial; perspective: initial; perspective-origin: initial; pointer-events: initial; position: absolute; quotes: initial; r: initial; resize: initial; ruby-position: initial; rx: initial; ry: initial; scroll-behavior: initial; scroll-margin-block: initial; scroll-margin: initial; scroll-margin-inline: initial; scroll-padding-block: initial; scroll-padding: initial; scroll-padding-inline: initial; scroll-snap-align: initial; scroll-snap-stop: initial; scroll-snap-type: initial; shape-image-threshold: initial; shape-margin: initial; shape-outside: initial; shape-rendering: initial; size: initial; speak: initial; stop-color: initial; stop-opacity: initial; stroke: initial; stroke-dasharray: initial; stroke-dashoffset: initial; stroke-linecap: initial; stroke-linejoin: initial; stroke-miterlimit: initial; stroke-opacity: initial; stroke-width: initial; tab-size: initial; table-layout: initial; text-align: initial; text-align-last: initial; text-anchor: initial; text-combine-upright: initial; text-decoration: initial; text-decoration-skip-ink: initial; text-indent: initial; text-overflow: initial; text-shadow: initial; text-size-adjust: initial; text-transform: initial; text-underline-offset: initial; text-underline-position: initial; touch-action: initial; transform: initial; transform-box: initial; transform-origin: initial; transform-style: initial; transition: initial; user-select: initial; vector-effect: initial; vertical-align: initial; visibility: initial; -webkit-app-region: initial; border-spacing: initial; -webkit-border-image: initial; -webkit-box-align: initial; -webkit-box-decoration-break: initial; -webkit-box-direction: initial; -webkit-box-flex: initial; -webkit-box-ordinal-group: initial; -webkit-box-orient: initial; -webkit-box-pack: initial; -webkit-box-reflect: initial; -webkit-highlight: initial; -webkit-hyphenate-character: initial; -webkit-line-break: initial; -webkit-line-clamp: initial; -webkit-mask-box-image: initial; -webkit-mask: initial; -webkit-mask-composite: initial; -webkit-perspective-origin-x: initial; -webkit-perspective-origin-y: initial; -webkit-print-color-adjust: initial; -webkit-rtl-ordering: initial; -webkit-ruby-position: initial; -webkit-tap-highlight-color: initial; -webkit-text-combine: initial; -webkit-text-decorations-in-effect: initial; -webkit-text-emphasis: initial; -webkit-text-emphasis-position: initial; -webkit-text-fill-color: initial; -webkit-text-security: initial; -webkit-text-stroke: initial; -webkit-transform-origin-x: initial; -webkit-transform-origin-y: initial; -webkit-transform-origin-z: initial; -webkit-user-drag: initial; -webkit-user-modify: initial; white-space: initial; widows: initial; width: initial; will-change: initial; word-break: initial; word-spacing: initial; x: initial; y: initial; z-index: 2147483647;"><link rel="stylesheet" href="chrome-extension://hokifickgkhplphjiodbggjmoafhignh/fonts/fabric-icons.css"><div style="all: initial;"></div></div></div></editor-card></html>
